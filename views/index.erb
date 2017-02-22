@@ -1,0 +1,10 @@
+<h1>Players</h1>
+
+<% @players.each do |player| %>
+  <p>Name: <%= player.name %></p>
+  <p>Nickname: <%= player.nickname %></p>
+  <p>Dominant Hand: <%= player.dominant_hand %></p>
+  <p>Skill Set: <%= player.skill_set %></p>
+  <p>Wins: <%= player.win_count %></p>
+  <p>Losses: <%= player.loss_count %></p>
+<% end %>
