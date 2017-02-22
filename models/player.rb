@@ -18,4 +18,16 @@ class Player
     @id = player['id'].to_i
   end
 
+  def self.all
+    sql = "SELECT * FROM players;"
+    players = SqlRunner.run(sql)
+    return players.map { |player| Player.new(player) }
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM players WHERE id = #{id};"
+    player = SqlRunner.run(sql).first
+    return Player.new(player)
+  end
+
 end
