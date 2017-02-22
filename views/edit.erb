@@ -1,0 +1,21 @@
+<h1>Edit Player</h1>
+
+<form method="POST" action="/players/<%= @player.id %>">
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" value="<%= @player.name %>"/>
+
+  <label for="nickname">Nickname:</label>
+  <input type="text" name="nickname" id="nickname" value="<%= @player.nickname %>"/>
+
+  <label for="dominant-hand">Dominant Hand:</label>
+  <select name="dominant_hand" id="dominant-hand">
+    <option <%= "selected" if @player.dominant_hand == "Right" %> value="Right">Right</option>
+    <option <%= "selected" if @player.dominant_hand == "Left" %> value="Left">Left</option>
+    <option <%= "selected" if @player.dominant_hand == "I'll keep you guessing" %> value="I'll keep you guessing">I'll keep you guessing</option>
+  </select>
+
+  <label for="skill-set">Skill Set:</label>
+  <input type="text" name="skill_set" id="skill-set" value="<%= @player.skill_set %>"/>
+
+  <button type="submit">Edit Player</button>
+</form>

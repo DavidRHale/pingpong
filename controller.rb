@@ -11,13 +11,24 @@ get '/players/new' do
   erb(:new)
 end
 
+post '/players' do
+  player = Player.new(params)
+  player.save
+  erb(:create)
+end
+
 get '/players/:id' do
   @player = Player.find(params[:id])
   erb(:show)
 end
 
-post '/players' do
+get '/players/:id/edit' do
+  @player = Player.find(params[:id])
+  erb(:edit)
+end
+
+post '/players/:id' do
   player = Player.new(params)
-  player.save
-  erb(:create)
+  player.update
+  redirect to "/players/#{player.id}"
 end
