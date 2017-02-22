@@ -11,7 +11,7 @@
   <select name="dominant_hand" id="dominant-hand">
     <option <%= "selected" if @player.dominant_hand == "Right" %> value="Right">Right</option>
     <option <%= "selected" if @player.dominant_hand == "Left" %> value="Left">Left</option>
-    <option <%= "selected" if @player.dominant_hand == "I'll keep you guessing" %> value="I'll keep you guessing">I'll keep you guessing</option>
+    <option <%= "selected" if @player.dominant_hand == "I'll keep you guessing" %> value="Secret">Secret</option>
   </select>
 
   <label for="skill-set">Skill Set:</label>
