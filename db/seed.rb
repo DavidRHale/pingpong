@@ -1,6 +1,8 @@
 require('pry')
 require_relative('../models/player.rb')
 
+Player.delete_all
+
 player1 = Player.new({
   'name' => 'David Hale',
   'nickname' => 'The Admiral',

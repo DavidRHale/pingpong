@@ -30,4 +30,14 @@ class Player
     return Player.new(player)
   end
 
+  def self.delete_all
+    sql = "DELETE FROM players;"
+    SqlRunner.run(sql)
+  end
+
+  def delete
+    sql = "DELETE FROM players WHERE id = #{@id};"
+    SqlRunner.run(sql)
+  end
+
 end
