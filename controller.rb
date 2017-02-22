@@ -10,3 +10,9 @@ end
 get '/players/new' do
   erb(:new)
 end
+
+post '/players' do
+  player = Player.new(params)
+  player.save
+  erb(:create)
+end
