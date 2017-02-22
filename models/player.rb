@@ -33,6 +33,11 @@ class Player
     return Player.new(player)
   end
 
+  def update
+    sql = "UPDATE players SET (name, nickname, dominant_hand, skill_set) = ('#{@name}', '#{@nickname}', '#{@dominant_hand}', '#{@skill_set}') WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
   def self.delete_all
     sql = "DELETE FROM players;"
     SqlRunner.run(sql)
