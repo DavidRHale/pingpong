@@ -1,7 +1,9 @@
+require_relative('../db/sql_runner.rb')
+
 class Player
 
   def initialize(options)
-    @id = options['id'].to_i if option['id']
+    @id = options['id'].to_i if options['id']
     @name = options['name']
     @nickname = options['nickname']
     @dominant_hand = options['dominant_hand']
@@ -11,7 +13,9 @@ class Player
   end
 
   def save
-  
+    sql = "INSERT INTO players (name, nickname, dominant_hand, skill_set, win_count, loss_count) VALUES ('#{@name}', '#{@nickname}', '#{@dominant_hand}', '#{@skill_set}', #{@win_count}, #{@loss_count}) RETURNING *;"
+    player = SqlRunner.run(sql).first
+    @id = player['id'].to_i
   end
 
 end
