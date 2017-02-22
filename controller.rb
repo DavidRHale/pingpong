@@ -6,3 +6,7 @@ get '/players' do
   @players = Player.all
   erb(:index)
 end
+
+get '/players/new' do
+  erb(:new)
+end

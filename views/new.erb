@@ -1,0 +1,21 @@
+<h1>New Player</h1>
+
+<form method="POST" action="/players">
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name"/>
+
+  <label for="nickname">Nickname:</label>
+  <input type="text" name="nickname" id="nickname"/>
+
+  <label for="dominant-hand">Dominant Hand:</label>
+  <select name="dominant_hand" id="dominant-hand">
+    <option value="Right">Right</option>
+    <option value="Left">Right</option>
+    <option value="I'll keep you guessing">I'll keep you guessing</option>
+  </select>
+
+  <label for="skill-set">Skill Set:</label>
+  <input type="text" name="skill_set" id="skill-set"/>
+
+  <button type="submit">Add New Player</button>
+</form>
