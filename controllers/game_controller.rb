@@ -10,3 +10,10 @@ end
 get '/games/new' do 
   erb(:'game/new')
 end
+
+
+post '/games' do
+  game = Game.new(params)
+  game.save
+  redirect to '/games'
+end
