@@ -3,6 +3,7 @@ require_relative('../models/player.rb')
 require_relative('../models/game.rb')
 
 Player.delete_all
+Game.delete_all
 
 player1 = Player.new({
   'name' => 'David Hale',
