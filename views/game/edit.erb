@@ -1,0 +1,11 @@
+<h1>Update Game:</h1>
+
+<form method="POST" action="/games/<%= @game.id %>">
+  <label for="game-date">Date:</label>
+  <input type="text" name="game_date" id="game-date" value="<%= @game.game_date %>"/>
+
+  <label for="game-time">Time:</label>
+  <input type="text" name="game_time" id="game-time" value="<%= @game.game_time %>"/>
+
+  <button type="submit">Update Game</button>
+</form>
