@@ -6,3 +6,7 @@ get '/games' do
   @games = Game.all
   erb(:'game/index')
 end
+
+get '/games/new' do 
+  erb(:'game/new')
+end
