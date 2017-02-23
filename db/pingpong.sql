@@ -13,5 +13,6 @@ CREATE TABLE players(
 
 CREATE TABLE games(
   id SERIAL4 PRIMARY KEY,
-  game_date DATE
+  game_date DATE,
+  game_time TIME
 );

@@ -1,5 +1,6 @@
 require('pry')
 require_relative('../models/player.rb')
+require_relative('../models/game.rb')
 
 Player.delete_all
 
@@ -23,6 +24,12 @@ player2 = Player.new({
 
 player1.save
 player2.save
+
+game1 = Game.new({'game_date' => '2017/02/23', 'game_time' => '16:00'})
+game2 = Game.new({'game_date' => '2017/02/25', 'game_time' => '15:00'})
+
+game1.save
+game2.save
 
 binding.pry
 nil
