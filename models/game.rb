@@ -29,6 +29,11 @@ class Game
     return Game.new(game)
   end
 
+  def update
+    sql = "UPDATE games SET (game_date, game_time) = ('#{@game_date}', '#{@game_time}') WHERE id = #{@id};"
+    SqlRunner.run(sql)
+  end
+
   def self.delete_all
     sql ="DELETE FROM games;"
     SqlRunner.run(sql)

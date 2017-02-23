@@ -21,6 +21,12 @@ get '/games/:id/edit' do
   erb(:'game/edit')
 end
 
+post '/games/:id' do
+  game = Game.new(params)
+  game.update
+  erb(:'game/update')
+end
+
 post '/games' do
   game = Game.new(params)
   game.save
