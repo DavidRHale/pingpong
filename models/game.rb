@@ -2,6 +2,9 @@ require_relative('../db/sql_runner.rb')
 
 class Game
 
+  attr_accessor :game_date, :game_time
+  attr_reader :id
+
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @game_date = options['game_date']
