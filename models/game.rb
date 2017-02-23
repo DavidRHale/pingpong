@@ -20,4 +20,10 @@ class Game
     return games.map { |game| Game.new(game) }
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM games WHERE id = #{id}"
+    game = SqlRunner.run(sql).first
+    return Game.new(game)
+  end
+
 end
