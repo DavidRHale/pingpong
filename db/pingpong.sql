@@ -1,5 +1,5 @@
 DROP TABLE players;
-DROP TABLE game;
+DROP TABLE games;
 
 CREATE TABLE players(
   id SERIAL4 PRIMARY KEY,
@@ -11,7 +11,7 @@ CREATE TABLE players(
   loss_count INT4
 );
 
-CREATE TABLE game(
+CREATE TABLE games(
   id SERIAL4 PRIMARY KEY,
   game_date DATE
 );

@@ -5,4 +5,8 @@ class Game
     @game_date = options['date']
   end
 
+  def save
+    sql = "INSERT INTO games "
+  end
+
 end
