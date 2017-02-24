@@ -27,8 +27,14 @@ class Player
     return players.map { |player| Player.new(player) }
   end
 
-  def self.find(id)
+  def self.find_by_id(id)
     sql = "SELECT * FROM players WHERE id = #{id};"
+    player = SqlRunner.run(sql).first
+    return Player.new(player)
+  end
+
+  def self.find_by_name(name)
+    sql = "SELECT * FROM players WHERE name = '#{name}';"
     player = SqlRunner.run(sql).first
     return Player.new(player)
   end
