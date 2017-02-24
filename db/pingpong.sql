@@ -1,6 +1,6 @@
+DROP TABLE player_game;
 DROP TABLE players;
 DROP TABLE games;
-DROP TABLE player_games;
 
 CREATE TABLE players(
   id SERIAL4 PRIMARY KEY,
@@ -18,10 +18,10 @@ CREATE TABLE games(
   game_time TIME
 );
 
-CREATE TABLE player_games(
+CREATE TABLE player_game(
   id SERIAL4 PRIMARY KEY,
-  player_id INT4 REFERENCES players(id),
-  game_id INT4 REFERENCES games(id),
+  player_id INT4 REFERENCES players(id) ON DELETE CASCADE,
+  game_id INT4 REFERENCES games(id) ON DELETE CASCADE,
   player_score INT4,
   player_won BOOLEAN
 );
