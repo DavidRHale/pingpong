@@ -1,0 +1,36 @@
+#wrapper {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+#logo {
+  text-align: center;
+  margin: 0;
+}
+
+header {
+  background-color: #6ab47b;
+  border-color: #599A68;
+}
+
+nav {
+  background-color: #599A68;
+}
+
+nav a, nav a:visited{
+  color: #fff;
+}
+
+h1 {
+  color: #fff;
+}
+
+nav a.selected, nav a:hover {
+  background-color: #32673F;
+}
+
+body {
+  background-color: #fff;
+  color: #999;
+}

@@ -2,14 +2,24 @@
 <html>
 <head>
   <title>PingPong</title>
+  <link rel="stylesheet" type="text/css" href="/reset.css">
+  <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-  <nav>
-    <a href="/players/new">Add Player</a>
-    <a href="/players">View Players</a>
-    <a href="/games">View Games</a>
-    <a href="/games/new">Add Game</a>
-  </nav>
-  <%= yield %>
+  <header>
+    <a href="/">
+      <h1>Ping-Pong-O-Rama</h1>
+    </a>
+    <nav>
+      <a href="/players/new">Add Player</a>
+      <a href="/players">View Players</a>
+      <a href="/games">View Games</a>
+      <a href="/games/new">Add Game</a>
+    </nav>
+  </header>
+  <div id="wrapper"
+    <%= yield %>
+  </div>
+  <footer></footer>
 </body>
 </html>
