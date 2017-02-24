@@ -20,7 +20,17 @@ class PlayerGame
   end
 
   def self.all
-    sql = "SELECT * FROM player_games"
+    sql = "SELECT * FROM player_games;"
+    player_games = SqlRunner.run(sql)
+    return player_games.map { |player_game| PlayerGame.new(player_game) }
   end
+
+  def self.find(id)
+    sql = "SELECT * FROM player_games WHERE id = #{id}"
+    player_game = SqlRunner.run(sql).first
+    return PlayerGame.new(player_game)
+  end
+
+  
 
 end
