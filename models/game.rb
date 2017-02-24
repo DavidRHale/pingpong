@@ -50,4 +50,10 @@ class Game
     return players.map { |player| Player.new(player) }
   end
 
+  def scores
+    sql = "SELECT player_score FROM player_games WHERE game_id = #{@id};"
+    scores = SqlRunner.run(sql)
+    return scores
+  end
+
 end
