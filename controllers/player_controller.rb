@@ -17,6 +17,11 @@ post '/players' do
   erb(:'player/create')
 end
 
+get '/players/rankings' do
+  @players = Player.all
+  erb(:'player/rankings')
+end
+
 get '/players/:id' do
   @player = Player.find_by_id(params[:id])
   @games = @player.last_5_games

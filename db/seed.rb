@@ -12,7 +12,7 @@ player1 = Player.new({
   'nickname' => 'The Admiral',
   'dominant_hand' => 'Right',
   'skill_set' => 'Backhand God',
-  'win_count' => 0,
+  'win_count' => 4,
   'loss_count' => 0
   })
 
@@ -21,12 +21,32 @@ player2 = Player.new({
   'nickname' => 'The Wimp',
   'dominant_hand' => 'Right',
   'skill_set' => 'None',
-  'win_count' => 0,
+  'win_count' => 1,
+  'loss_count' => 0
+  })
+
+player3 = Player.new({
+  'name' => 'Winston Hale',
+  'nickname' => 'The Cat',
+  'dominant_hand' => 'Right',
+  'skill_set' => 'None',
+  'win_count' => 5,
+  'loss_count' => 0
+  })
+
+player4 = Player.new({
+  'name' => 'Jimmy',
+  'nickname' => 'Jim',
+  'dominant_hand' => 'Right',
+  'skill_set' => 'None',
+  'win_count' => 3,
   'loss_count' => 0
   })
 
 player1.save
 player2.save
+player3.save
+player4.save
 
 game1 = Game.new({'game_date' => '2017/02/23', 'game_time' => '16:00'})
 game2 = Game.new({'game_date' => '2017/02/25', 'game_time' => '15:00'})
