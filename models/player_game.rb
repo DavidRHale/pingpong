@@ -41,4 +41,10 @@ class PlayerGame
     SqlRunner.run(sql)
   end
 
+  def player
+    sql = "SELECT * FROM players WHERE id = #{@player_id};"
+    player = SqlRunner.run(sql).first
+    return Player.new(player)
+  end
+
 end
