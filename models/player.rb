@@ -65,4 +65,12 @@ class Player
     @loss_count += 1 if win_loss == false
   end
 
+  def last_5_games
+    sql = "SELECT games.* FROM games INNER JOIN player_games ON player_games.game_id = games.id WHERE player_games.player_id = 20 order by game_date desc limit 5;"
+    games = SqlRunner.run(sql)
+    return games.map { |game| Game.new(game) }
+  end
+
+  
+
 end
