@@ -60,4 +60,9 @@ class Player
     return score.values.first.to_i
   end
 
+  def add_win_or_loss(win_loss)
+    @win_count += 1 if win_loss == true
+    @loss_count += 1 if win_loss == false
+  end
+
 end
