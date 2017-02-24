@@ -53,11 +53,11 @@ class Game
   def scores
     sql = "SELECT player_score FROM player_games WHERE game_id = #{@id};"
     scores = SqlRunner.run(sql)
-    return scores
+    return scores.values
   end
 
   def winner
-    sql = "SELECT players.* FROM players INNER JOIN player_games ON player_games.player_id = players.id WHERE player_won = true"
+    sql = "SELECT players.* FROM players INNER JOIN player_games ON player_games.player_id = players.id WHERE player_games.player_won = true AND player_games.game_id = #{@id};"
     winner = SqlRunner.run(sql).first
     return Player.new(winner)
   end

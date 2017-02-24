@@ -19,6 +19,7 @@ end
 
 get '/players/:id' do
   @player = Player.find_by_id(params[:id])
+  @games = @player.last_5_games
   erb(:'player/show')
 end
 
