@@ -40,7 +40,7 @@ class Game
   end
 
   def delete
-    sql = "DELETE FROM games WHERE id = #{@id}"
+    sql = "DELETE FROM games WHERE id = #{@id};"
     SqlRunner.run(sql)
   end
 

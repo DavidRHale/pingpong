@@ -32,3 +32,9 @@ post '/games' do
   game.save
   redirect to '/games'
 end
+
+post '/games/:id/delete' do
+  game = Game.find(params['id'])
+  game.delete
+  erb(:'game/destroy')
+end

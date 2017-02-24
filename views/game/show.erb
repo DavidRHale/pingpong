@@ -2,3 +2,7 @@
 
 <p>Date: <%= @game.game_date %></p>
 <p>Time: <%= @game.game_time %></p>
+
+<form method="POST" action="/games/<%= @game.id %>/delete">
+  <button type="submit">Delete Game</button>
+</form>
