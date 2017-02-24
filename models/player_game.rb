@@ -16,7 +16,7 @@ class PlayerGame
   def save
     sql = "INSERT INTO player_games (player_id, game_id, player_score, player_won) VALUES (#{@player_id}, #{@game_id}, #{@player_score}, #{@player_won}) RETURNING *;"
     player_game = SqlRunner.run(sql).first
-    return PlayerGame.new(player_game)
+    @id = player_game['id'].to_i
   end
 
   def self.all
@@ -31,6 +31,14 @@ class PlayerGame
     return PlayerGame.new(player_game)
   end
 
-  
+  def delete
+    sql = "DELETE FROM player_games WHERE id = #{@id};"
+    SqlRunner.run(sql)
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM player_games;"
+    SqlRunner.run(sql)
+  end
 
 end
