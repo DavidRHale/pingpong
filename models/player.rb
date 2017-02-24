@@ -48,4 +48,10 @@ class Player
     SqlRunner.run(sql)
   end
 
+  def score(game_id)
+    sql = "SELECT player_score FROM player_games WHERE game_id = #{game_id};"
+    score = SqlRunner.run(sql).first
+    return score.values.first
+  end
+
 end
