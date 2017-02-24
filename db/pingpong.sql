@@ -1,4 +1,4 @@
-DROP TABLE player_game;
+DROP TABLE player_games;
 DROP TABLE players;
 DROP TABLE games;
 
@@ -18,7 +18,7 @@ CREATE TABLE games(
   game_time TIME
 );
 
-CREATE TABLE player_game(
+CREATE TABLE player_games(
   id SERIAL4 PRIMARY KEY,
   player_id INT4 REFERENCES players(id) ON DELETE CASCADE,
   game_id INT4 REFERENCES games(id) ON DELETE CASCADE,

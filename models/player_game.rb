@@ -14,9 +14,13 @@ class PlayerGame
   end
 
   def save
-    sql = "INSERT INTO player_game (player_id, game_id, player_score, player_won) VALUES (#{@player_id}, #{@game_id}, #{@player_score}, #{@player_won}) RETURNING *;"
+    sql = "INSERT INTO player_games (player_id, game_id, player_score, player_won) VALUES (#{@player_id}, #{@game_id}, #{@player_score}, #{@player_won}) RETURNING *;"
     player_game = SqlRunner.run(sql).first
     return PlayerGame.new(player_game)
+  end
+
+  def self.all
+    sql = "SELECT * FROM player_games"
   end
 
 end
