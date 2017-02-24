@@ -44,4 +44,10 @@ class Game
     SqlRunner.run(sql)
   end
 
+  def players
+    sql = "SELECT * FROM players INNER JOIN player_games ON game_id = #{@id} WHERE player_id = players.id"
+    players = SqlRunner.run(sql)
+    return players.map { |player| Player.new(player) }
+  end
+
 end
