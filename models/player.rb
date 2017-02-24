@@ -70,7 +70,11 @@ class Player
     games = SqlRunner.run(sql)
     return games.map { |game| Game.new(game) }
   end
-
   
+  def self.rankings
+    sql = "SELECT * FROM players ORDER BY win_count DESC;"
+    players = SqlRunner.run(sql)
+    return players.map { |player| Player.new(player) }
+  end
 
 end

@@ -18,7 +18,7 @@ post '/players' do
 end
 
 get '/players/rankings' do
-  @players = Player.all
+  @players = Player.rankings
   erb(:'player/rankings')
 end
 

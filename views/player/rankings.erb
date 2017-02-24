@@ -1,9 +1,7 @@
 <h1>Rankings</h1>
 
-<% sorted = @players.sort_by { |player| player.win_count } %>
-<% sorted.reverse! %>
 <% rank = 1 %>
-<% sorted.each do |player| %>
+<% @players.each do |player| %>
   <p><%= rank %>) <%= player.name %> - <%= player.win_count %> wins</p>
   <% rank += 1 %>
 <% end %> 
