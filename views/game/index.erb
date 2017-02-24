@@ -3,4 +3,5 @@
 <% @games.each do |game| %>
   <p>Date: <%= game.game_date %></p>
   <p>Time: <%= game.game_time %></p>
+  <a href="/games/<%= game.id %>">View Game</a>
 <% end %>

@@ -36,9 +36,14 @@ game2.save
 
 player_game1 = PlayerGame.new({'player_id' => player1.id, 'game_id' => game1.id, 'player_score' => 21, 'player_won' => true})
 player_game2 = PlayerGame.new({'player_id' => player2.id, 'game_id' => game1.id, 'player_score' => 15, 'player_won' => false})
+player_game3 = PlayerGame.new({'player_id' => player1.id, 'game_id' => game2.id, 'player_score' => 15, 'player_won' => false})
+player_game4 = PlayerGame.new({'player_id' => player2.id, 'game_id' => game2.id, 'player_score' => 21, 'player_won' => true})
 
 player_game1.save
 player_game2.save
+player_game3.save
+player_game4.save
+
 
 binding.pry
 nil

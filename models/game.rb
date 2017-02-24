@@ -45,7 +45,7 @@ class Game
   end
 
   def players
-    sql = "SELECT * FROM players INNER JOIN player_games ON game_id = #{@id} WHERE player_id = players.id"
+    sql = "SELECT players.* FROM players INNER JOIN player_games ON player_games.player_id = players.id WHERE game_id = #{@id}"
     players = SqlRunner.run(sql)
     return players.map { |player| Player.new(player) }
   end
@@ -57,7 +57,7 @@ class Game
   end
 
   def winner
-    sql = "SELECT * FROM players INNER JOIN player_games ON game_id = #{@id} WHERE player_won = true;"
+    sql = "SELECT players.* FROM players INNER JOIN player_games ON player_games.player_id = players.id WHERE player_won = true"
     winner = SqlRunner.run(sql).first
     return Player.new(winner)
   end
