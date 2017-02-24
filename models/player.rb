@@ -11,8 +11,8 @@ class Player
     @nickname = options['nickname']
     @dominant_hand = options['dominant_hand']
     @skill_set = options['skill_set']
-    @win_count = 0 || options['win_count'].to_i
-    @loss_count = 0 || options['loss_count'].to_i
+    @win_count = options['win_count'].to_i
+    @loss_count = options['loss_count'].to_i
   end
 
   def save
