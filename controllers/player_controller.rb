@@ -18,12 +18,12 @@ post '/players' do
 end
 
 get '/players/:id' do
-  @player = Player.find(params[:id])
+  @player = Player.find_by_id(params[:id])
   erb(:'player/show')
 end
 
 get '/players/:id/edit' do
-  @player = Player.find(params[:id])
+  @player = Player.find_by_id(params[:id])
   erb(:'player/edit')
 end
 
@@ -34,7 +34,7 @@ post '/players/:id' do
 end
 
 post '/players/:id/delete' do
-  player = Player.find(params[:id])
+  player = Player.find_by_id(params[:id])
   player.delete
   erb(:'player/destroy')
 end
