@@ -40,7 +40,7 @@ class Player
   end
 
   def update
-    sql = "UPDATE players SET (name, nickname, dominant_hand, skill_set) = ('#{@name}', '#{@nickname}', '#{@dominant_hand}', '#{@skill_set}') WHERE id = #{@id}"
+    sql = "UPDATE players SET (name, nickname, dominant_hand, skill_set, win_count, loss_count) = ('#{@name}', '#{@nickname}', '#{@dominant_hand}', '#{@skill_set}', #{@win_count}, #{@loss_count}) WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
 
