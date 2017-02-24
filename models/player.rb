@@ -51,7 +51,7 @@ class Player
   def score(game_id)
     sql = "SELECT player_score FROM player_games WHERE game_id = #{game_id} AND player_id = #{@id};"
     score = SqlRunner.run(sql).first
-    return score.values.first
+    return score.values.first.to_i
   end
 
 end

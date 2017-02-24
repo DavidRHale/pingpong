@@ -56,4 +56,10 @@ class Game
     return scores
   end
 
+  def winner_id
+    sql = "SELECT player_id FROM player_games WHERE player_won = true AND game_id = #{@id};"
+    winner_id = SqlRunner.run(sql).first
+    return winner_id.values.first.to_i
+  end
+
 end
