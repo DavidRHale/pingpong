@@ -13,6 +13,8 @@ end
 
 get '/games/:id' do
   @game = Game.find(params['id'])
+  @player1 = @game.players[0]
+  @player2 = @game.players[1]
   erb(:'game/show')
 end
 
