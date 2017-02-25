@@ -66,7 +66,7 @@ class Player
   end
 
   def last_5_games
-    sql = "SELECT games.* FROM games INNER JOIN player_games ON player_games.game_id = games.id WHERE player_games.player_id = 20 order by game_date desc limit 5;"
+    sql = "SELECT games.* FROM games INNER JOIN player_games ON player_games.game_id = games.id WHERE player_games.player_id = #{@id} order by game_date desc limit 5;"
     games = SqlRunner.run(sql)
     return games.map { |game| Game.new(game) }
   end

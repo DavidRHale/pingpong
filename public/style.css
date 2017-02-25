@@ -6,7 +6,25 @@
 
 #logo {
   text-align: center;
+  margin: 20px 0;
+  display: inline-block;
+}
+
+#title {
+  font-family: 'Baloo', cursive;
+}
+
+.gallery {
   margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gallery li {
+  width: 45%;
+  margin: 2.5%;
+  background-color: #F5F5F5;
+  float: left;
 }
 
 header {
@@ -14,8 +32,15 @@ header {
   border-color: #599A68;
 }
 
+header a, header a:visited {
+  text-decoration: none;
+}
+
 nav {
   background-color: #599A68;
+  text-align: center;
+  padding: 10px 0;
+  margin: 20px 0 0;
 }
 
 nav a, nav a:visited{
@@ -24,9 +49,24 @@ nav a, nav a:visited{
 
 h1 {
   color: #fff;
+  margin: 15px;
+  font-size: 1.75em;
+  font-weight: normal; 
+  line-height: 0.8em;
 }
 
 nav a.selected, nav a:hover {
+  background-color: #32673F;
+}
+
+.nav-link {
+  text-align: center;
+  padding: 10px;
+  margin: 20px 0 0;
+  display: inline;
+}
+
+.nav-link:hover {
   background-color: #32673F;
 }
 
