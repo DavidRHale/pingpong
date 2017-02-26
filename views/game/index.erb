@@ -1,7 +1,11 @@
 <h1>Games</h1>
 
-<% @games.each do |game| %>
-  <p>Date: <%= game.game_date %></p>
-  <p>Time: <%= game.game_time %></p>
-  <a href="/games/<%= game.id %>">View Game</a>
-<% end %>
+<ul class="gallery">
+  <% @games.each do |game| %>
+  <li>
+    <p>Date: <%= game.game_date %></p>
+    <p>Time: <%= game.game_time %></p>
+    <a href="/games/<%= game.id %>">View Game</a>
+  </li>
+  <% end %>
+</ul>
