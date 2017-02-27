@@ -14,4 +14,14 @@ class TournamentPlayer
     @id = tournament_player['id'].to_i
   end
 
+  def delete
+    sql = "DELETE FROM tournament_players WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM tournament_players;"
+    SqlRunner.run(sql)
+  end
+
 end
