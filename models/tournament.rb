@@ -89,9 +89,11 @@ class Tournament
       if (player1 != player2) && !game_made
         game = Game.new({'game_date' => (Date.today + counter + 1), 'tournament_id' => @id})
         game.save
-        player_game = PlayerGame.new({'player_id' => player1.id, 'game_id' => game.id, 'player_score' => 0, 'player_won' => false})
-        player_game = PlayerGame.new({'player_id' => player2.id, 'game_id' => game.id, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
-        player_game.save
+        player_game1 = PlayerGame.new({'player_id' => player1.id, 'game_id' => game.id, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
+        player_game2 = PlayerGame.new({'player_id' => player2.id, 'game_id' => game.id, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
+        player_game1.save
+        player_game2.save
+
         counter += 1
       end
     end
