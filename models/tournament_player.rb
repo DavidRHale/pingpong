@@ -2,6 +2,9 @@ require_relative('../db/sql_runner.rb')
 
 class TournamentPlayer
 
+  attr_accessor :player_id, :tournament_id
+  attr_reader :id
+
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @player_id = options['player_id']
@@ -24,6 +27,11 @@ class TournamentPlayer
     sql = "SELECT * FROM tournament_players WHERE id = #{id};"
     tournament_player = SqlRunner.run(sql).first
     return TournamentPlayer.new(tournament_player)
+  end
+
+  def update
+    sql = "UPDATE tournament_players SET (player_id, tournament_id) = (#{@player_id}, #{@tournament_id}) WHERE id = #{@id};"
+    SqlRunner.run(sql)
   end
 
   def delete
