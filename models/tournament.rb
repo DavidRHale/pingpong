@@ -1,5 +1,6 @@
 require_relative('../db/sql_runner.rb')
 require_relative('./player.rb')
+require_relative('./game.rb')
 
 class Tournament
 
@@ -51,6 +52,10 @@ class Tournament
     return players.map { |player| Player.new(player) }
   end
 
-  
+  def games
+    sql = "SELECT * FROM games WHERE tournament_id = #{@id}"
+    games = SqlRunner.run(sql)
+    return games.map { |game| Game.new(game) }
+  end
 
 end

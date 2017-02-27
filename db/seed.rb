@@ -52,17 +52,24 @@ player2.save
 player3.save
 player4.save
 
-game1 = Game.new({'game_date' => '2017/02/23', 'game_time' => '16:00'})
-game2 = Game.new({'game_date' => '2017/02/25', 'game_time' => '15:00'})
-
-game1.save
-game2.save
-
 tournament1 = Tournament.new({'name' => 'Master League', 'format' => 'league'})
 tournament2 = Tournament.new({'name' => 'Master Cup', 'format' => 'knock-out'})
+tournament3 = Tournament.new({'name' => 'Friendlies', 'format' => 'league'})
 
 tournament1.save
 tournament2.save
+tournament3.save
+
+
+game1 = Game.new({'game_date' => '2017/02/23', 'game_time' => '16:00', 'tournament_id' => tournament3.id})
+game2 = Game.new({'game_date' => '2017/02/25', 'game_time' => '15:00', 'tournament_id' => tournament3.id})
+game3 = Game.new({'game_date' => '2017/02/25', 'game_time' => '15:00', 'tournament_id' => tournament1.id})
+game4 = Game.new({'game_date' => '2017/02/25', 'game_time' => '15:00', 'tournament_id' => tournament1.id})
+
+game1.save
+game2.save
+game3.save
+game4.save
 
 tournament_player1 = TournamentPlayer.new({'player_id' => player1.id, 'tournament_id' => tournament1.id})
 tournament_player2 = TournamentPlayer.new({'player_id' => player2.id, 'tournament_id' => tournament1.id})
@@ -74,11 +81,20 @@ player_game1 = PlayerGame.new({'player_id' => player1.id, 'game_id' => game1.id,
 player_game2 = PlayerGame.new({'player_id' => player2.id, 'game_id' => game1.id, 'player_score' => 15, 'player_won' => false})
 player_game3 = PlayerGame.new({'player_id' => player1.id, 'game_id' => game2.id, 'player_score' => 15, 'player_won' => false})
 player_game4 = PlayerGame.new({'player_id' => player2.id, 'game_id' => game2.id, 'player_score' => 21, 'player_won' => true})
+player_game5 = PlayerGame.new({'player_id' => player2.id, 'game_id' => game3.id, 'player_score' => 21, 'player_won' => true})
+player_game6 = PlayerGame.new({'player_id' => player3.id, 'game_id' => game3.id, 'player_score' => 10, 'player_won' => false})
+player_game7 = PlayerGame.new({'player_id' => player3.id, 'game_id' => game4.id, 'player_score' => 21, 'player_won' => true})
+player_game8 = PlayerGame.new({'player_id' => player4.id, 'game_id' => game4.id, 'player_score' => 12, 'player_won' => false})
+
 
 player_game1.save
 player_game2.save
 player_game3.save
 player_game4.save
+player_game5.save
+player_game6.save
+player_game7.save
+player_game8.save
 
 
 binding.pry
