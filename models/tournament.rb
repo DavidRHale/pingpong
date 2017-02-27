@@ -76,11 +76,11 @@ class Tournament
 
       games = tournament_games
 
-      names = games.map {|game| game.player_names}
+      players_in_games = games.map {|game| game.player_names}
 
-      names.flatten!
+      players_in_games.flatten!
 
-      game_made = names.map do |name_array|
+      game_made = players_in_games.map do |name_array|
         (name_array.include? player1.name) && (name_array.include? player2.name)
       end
 
@@ -89,7 +89,7 @@ class Tournament
       if (player1 != player2) && !game_made
         game = Game.new({'game_date' => (Date.today + counter + 1), 'tournament_id' => @id})
         game.save
-        player_game1 = PlayerGame.new({'player_id' => player1.id, 'game_id' => game.id, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
+        player_game1 = PlayerGame.new({'player_id' => player1.id.to_i, 'game_id' => game.id.to_i, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
         player_game2 = PlayerGame.new({'player_id' => player2.id, 'game_id' => game.id, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
         player_game1.save
         player_game2.save
