@@ -6,7 +6,7 @@
     <p>Time: <%= @game.game_time %></p>
     <p>Players: <%= @player1.name %>, <%= @player2.name %></p>
     <p>Winner: <%= @game.winner.name %></p>
-    <p>Score: <%= @player1.score(@game.id) %>, <%= @player2.score(@game.id) %></p>
+    <p>Score: <%= @player1.score(@game.id) %> : <%= @player2.score(@game.id) %></p>
 
     <form method="POST" action="/games/<%= @game.id %>/delete">
       <button type="submit">Delete Game</button>

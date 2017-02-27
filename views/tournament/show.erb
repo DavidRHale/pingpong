@@ -10,29 +10,12 @@
       <% end %>
     </ul>
 
-    <h2>Games:</h2>
+    <h2>Fixtures:</h2>
     <ul>
       <% @games.each do |game| %>
-        <li><%= game.game_date %></li>
+        <li><%= game.game_date %> | <%= game.players[0].name %> Vs <%= game.players[1].name %> | <%= game.scores %></li>
       <% end %>
     </ul>
-
-    <!-- <table>
-      <tr>
-        <th>Blank</th>
-        <% @players.each do |player| %>
-          <th><%= player.name %>
-        <% end %>
-      </tr>
-      <% counter=0 %>
-      <% while true %>
-        <% break if @players[counter] == nil %>
-        <tr>
-          <td><%= @players[counter].name %></td>
-          <% counter += 1 %>
-        </tr>
-      <% end %>
-    </table> -->
 
     <form method="POST" action="/players/<%= @tournament.id %>/delete">
       <button type="submit">Delete</button>

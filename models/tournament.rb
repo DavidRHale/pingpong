@@ -64,7 +64,7 @@ class Tournament
     tournament_player.save
   end
 
-  def fixtures
+  def create_league_fixtures
     players = tournament_players
     num_of_players = players.count
 
@@ -87,9 +87,10 @@ class Tournament
       game_made = game_made.include? true
 
       if (player1 != player2) && !game_made
-        game = Game.new({'game_date' => Date.today, 'tournament_id' => @id})
+        game = Game.new({'game_date' => (Date.today + counter + 1), 'tournament_id' => @id})
         game.save
         player_game = PlayerGame.new({'player_id' => player1.id, 'game_id' => game.id, 'player_score' => 0, 'player_won' => false})
+        player_game = PlayerGame.new({'player_id' => player2.id, 'game_id' => game.id, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
         player_game.save
         counter += 1
       end

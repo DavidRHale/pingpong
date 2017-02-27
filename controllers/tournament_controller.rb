@@ -10,6 +10,6 @@ end
 get '/tournaments/:id' do
   @tournament = Tournament.find(params[:id])
   @players = @tournament.tournament_players
-  @games = @tournament.tournament_games
+  @games = @tournament.create_league_fixtures
   erb(:'tournament/show')
 end
