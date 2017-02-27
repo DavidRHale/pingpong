@@ -25,8 +25,7 @@ CREATE TABLE tournaments (
 CREATE TABLE games(
   id SERIAL4 PRIMARY KEY,
   tournament_id INT4 REFERENCES tournaments(id) ON DELETE CASCADE,
-  game_date DATE,
-  game_time TIME
+  game_date DATE
 );
 
 CREATE TABLE tournament_players(

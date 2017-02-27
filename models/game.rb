@@ -2,18 +2,17 @@ require_relative('../db/sql_runner.rb')
 
 class Game
 
-  attr_accessor :game_date, :game_time, :tournament_id
+  attr_accessor :game_date, :tournament_id
   attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @game_date = options['game_date']
-    @game_time = options['game_time']
     @tournament_id = options['tournament_id'].to_i
   end
 
   def save
-    sql = "INSERT INTO games (game_date, game_time, tournament_id) VALUES ('#{@game_date}', '#{@game_time}', #{@tournament_id}) RETURNING *;"
+    sql = "INSERT INTO games (game_date, tournament_id) VALUES ('#{@game_date}', #{@tournament_id}) RETURNING *;"
     game = SqlRunner.run(sql).first
     @id = game['id'].to_i
   end
@@ -31,7 +30,7 @@ class Game
   end
 
   def update
-    sql = "UPDATE games SET (game_date, game_time) = ('#{@game_date}', '#{@game_time}') WHERE id = #{@id};"
+    sql = "UPDATE games SET (game_date) = ('#{@game_date}') WHERE id = #{@id};"
     SqlRunner.run(sql)
   end
 
@@ -49,6 +48,12 @@ class Game
     sql = "SELECT players.* FROM players INNER JOIN player_games ON player_games.player_id = players.id WHERE game_id = #{@id}"
     players = SqlRunner.run(sql)
     return players.map { |player| Player.new(player) }
+  end
+
+  def player_names
+    sql = "SELECT players.name FROM players INNER JOIN player_games ON player_games.player_id = players.id WHERE game_id = #{@id}"
+    names = SqlRunner.run(sql)
+    return names.map {|name| name['name']}
   end
 
   def scores

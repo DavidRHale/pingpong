@@ -46,16 +46,57 @@ class Tournament
     SqlRunner.run(sql)
   end
 
-  def players
+  def tournament_players
     sql = "SELECT p.* FROM players p INNER JOIN tournament_players tp ON p.id = tp.player_id WHERE tp.tournament_id = #{@id};"
     players = SqlRunner.run(sql)
     return players.map { |player| Player.new(player) }
   end
 
-  def games
+  def tournament_games
     sql = "SELECT * FROM games WHERE tournament_id = #{@id}"
     games = SqlRunner.run(sql)
     return games.map { |game| Game.new(game) }
+  end
+
+  def add_player(id)
+    player = Player.find_by_id(id)
+    tournament_player = TournamentPlayer.new({'player_id' => player.id, 'tournament_id' => @id})
+    tournament_player.save
+  end
+
+  def fixtures
+    players = tournament_players
+    num_of_players = players.count
+
+    counter = 0
+    while true
+      break if counter == 0.5 * num_of_players * (num_of_players - 1)
+      player1 = players.sample
+      player2 = players.sample
+
+      games = tournament_games
+
+      names = games.map {|game| game.player_names}
+
+      names.flatten!
+
+      game_made = names.map do |name_array|
+        (name_array.include? player1.name) && (name_array.include? player2.name)
+      end
+
+      game_made = game_made.include? true
+
+      if (player1 != player2) && !game_made
+        game = Game.new({'game_date' => Date.today, 'tournament_id' => @id})
+        game.save
+        player_game = PlayerGame.new({'player_id' => player1.id, 'game_id' => game.id, 'player_score' => 0, 'player_won' => false})
+        player_game.save
+        counter += 1
+      end
+    end
+
+    return tournament_games
+   
   end
 
 end

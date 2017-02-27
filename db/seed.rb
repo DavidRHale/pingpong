@@ -52,9 +52,9 @@ player2.save
 player3.save
 player4.save
 
-tournament1 = Tournament.new({'name' => 'Master League', 'format' => 'league'})
-tournament2 = Tournament.new({'name' => 'Master Cup', 'format' => 'knock-out'})
-tournament3 = Tournament.new({'name' => 'Friendlies', 'format' => 'league'})
+tournament1 = Tournament.new({'name' => 'Master League', 'format' => 'League'})
+tournament2 = Tournament.new({'name' => 'Master Cup', 'format' => 'Knock-Out'})
+tournament3 = Tournament.new({'name' => 'Friendlies', 'format' => 'Friendly'})
 
 tournament1.save
 tournament2.save
@@ -65,6 +65,7 @@ game1 = Game.new({'game_date' => '2017/02/23', 'game_time' => '16:00', 'tourname
 game2 = Game.new({'game_date' => '2017/02/25', 'game_time' => '15:00', 'tournament_id' => tournament3.id})
 game3 = Game.new({'game_date' => '2017/02/25', 'game_time' => '15:00', 'tournament_id' => tournament1.id})
 game4 = Game.new({'game_date' => '2017/02/25', 'game_time' => '15:00', 'tournament_id' => tournament1.id})
+game5 = Game.new({'game_date' => (Date.today + 1).to_s, 'game_time' => '15:00', 'tournament_id' => tournament1.id})
 
 game1.save
 game2.save

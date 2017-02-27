@@ -1,0 +1,15 @@
+<div>
+  <h1 class="page-title">Tournaments</h1>
+
+  <ul class="gallery">
+  <% @tournaments.each do |tournament| %>
+  <li>
+    <p>Name: <%= tournament.name %></p>
+    <p>Format: <%= tournament.format %></p>
+    
+
+    <a href="/tournaments/<%= tournament.id %>">View Tournament</a>
+  </li>
+  <% end %>
+  </ul>
+</div>
