@@ -34,4 +34,14 @@ class Tournament
     SqlRunner.run(sql)
   end
 
+  def delete
+    sql = "DELETE FROM tournaments WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM tournaments"
+    SqlRunner.run(sql)
+  end
+
 end

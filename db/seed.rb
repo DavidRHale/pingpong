@@ -6,6 +6,7 @@ require_relative('../models/tournament.rb')
 
 Player.delete_all
 Game.delete_all
+Tournament.delete_all
 PlayerGame.delete_all
 
 player1 = Player.new({
