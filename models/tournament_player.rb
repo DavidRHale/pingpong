@@ -20,6 +20,12 @@ class TournamentPlayer
     return tournament_players.map { |tournament_player| TournamentPlayer.new(tournament_player) }
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM tournament_players WHERE id = #{id};"
+    tournament_player = SqlRunner.run(sql).first
+    return TournamentPlayer.new(tournament_player)
+  end
+
   def delete
     sql = "DELETE FROM tournament_players WHERE id = #{@id}"
     SqlRunner.run(sql)
