@@ -3,6 +3,7 @@ require_relative('../models/player.rb')
 require_relative('../models/game.rb')
 require_relative('../models/player_game.rb')
 require_relative('../models/tournament.rb')
+require_relative('../models/tournament_player.rb')
 
 Player.delete_all
 Game.delete_all
@@ -61,6 +62,12 @@ tournament2 = Tournament.new({'name' => 'Master Cup', 'format' => 'knock-out'})
 
 tournament1.save
 tournament2.save
+
+tournament_player1 = TournamentPlayer.new({'player_id' => player1.id, 'tournament_id' => tournament1.id})
+tournament_player2 = TournamentPlayer.new({'player_id' => player2.id, 'tournament_id' => tournament1.id})
+
+tournament_player1.save
+tournament_player2.save
 
 player_game1 = PlayerGame.new({'player_id' => player1.id, 'game_id' => game1.id, 'player_score' => 21, 'player_won' => true})
 player_game2 = PlayerGame.new({'player_id' => player2.id, 'game_id' => game1.id, 'player_score' => 15, 'player_won' => false})
