@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner.rb')
+require_relative('./player.rb')
 
 class Tournament
 
@@ -43,5 +44,13 @@ class Tournament
     sql = "DELETE FROM tournaments"
     SqlRunner.run(sql)
   end
+
+  def players
+    sql = "SELECT p.* FROM players p INNER JOIN tournament_players tp ON p.id = tp.player_id WHERE tp.tournament_id = #{@id};"
+    players = SqlRunner.run(sql)
+    return players.map { |player| Player.new(player) }
+  end
+
+  
 
 end
