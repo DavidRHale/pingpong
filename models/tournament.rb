@@ -14,4 +14,10 @@ class Tournament
     @id = tournament['id'].to_i
   end
 
+  def self.all
+    sql = "SELECT * FROM tournaments;"
+    tournaments = SqlRunner.run(sql)
+    return tournaments.map { |tournament| Tournament.new(tournament) }
+  end
+
 end
