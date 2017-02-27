@@ -1,8 +1,9 @@
-<h1>Rankings</h1>
+<div>
+<h1 class="page-title">Rankings</h1>
 
-<% rank = 1 %>
-<% @players.each do |player| %>
+  <% rank = 1 %>
+  <% @players.each do |player| %>
   <p><%= rank %>) <%= player.name %> - <%= player.win_count %> wins, <%= player.loss_count %> losses</p>
   <% rank += 1 %>
-<% end %> 
-  
+  <% end %> 
+</div>

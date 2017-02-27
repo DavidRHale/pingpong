@@ -1,26 +1,28 @@
-<h1>View Player</h1>
+<div>
+  <h1 class="page-title">View Player</h1>
 
-<div class="show">
-  <p>Name: <%= @player.name %></p>
-  <p>Nickname: <%= @player.nickname %></p>
-  <p>Dominant Hand: <%= @player.dominant_hand %></p>
-  <p>Skill Set: <%= @player.skill_set %></p>
-  <p>Wins: <%= @player.win_count %></p>
-  <p>Losses: <%= @player.loss_count %></p>
+  <div class="show">
+    <p>Name: <%= @player.name %></p>
+    <p>Nickname: <%= @player.nickname %></p>
+    <p>Dominant Hand: <%= @player.dominant_hand %></p>
+    <p>Skill Set: <%= @player.skill_set %></p>
+    <p>Wins: <%= @player.win_count %></p>
+    <p>Losses: <%= @player.loss_count %></p>
 
-  <p>Last 5 Games: </p>
-  <% @games.each do |game| %>
-    <p>Date: <%= game.game_date %></p>
-    <p>Opponent: <% game.players.each do |player| %>
-      <%= player.name unless player.name == @player.name %>
-    <% end %></p>
+    <p>Last 5 Games: </p>
+    <% @games.each do |game| %>
+      <p>Date: <%= game.game_date %></p>
+      <p>Opponent: <% game.players.each do |player| %>
+        <%= player.name unless player.name == @player.name %>
+      <% end %></p>
       <p>Winner: <%= game.winner.name %></p>
       <p>Score: <%= game.scores.join(' - ') %></p>
-  <% end %>
+    <% end %>
 
-  <a href="/players/<%= @player.id %>/edit">Edit Player</a>
+    <a href="/players/<%= @player.id %>/edit">Edit Player</a>
 
-  <form method="POST" action="/players/<%= @player.id %>/delete">
-    <button type="submit">Delete</button>
-  </form>
+    <form method="POST" action="/players/<%= @player.id %>/delete">
+      <button type="submit">Delete</button>
+    </form>
+  </div>
 </div>

@@ -9,6 +9,7 @@ class PlayerGame
     @id = options['id'].to_i if options['id']
     @player_id = options['player_id'].to_i
     @game_id = options['game_id'].to_i
+    @tournament_id = options['tournament_id'].to_i
     @player_score = options['player_score'].to_i
     @player_won = options['player_won']
   end

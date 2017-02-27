@@ -12,6 +12,7 @@
 
 #title {
   font-family: 'Baloo', cursive;
+  color: #fff;
 }
 
 .gallery {
@@ -54,18 +55,21 @@ nav {
   text-align: center;
   padding: 10px 0;
   margin: 20px 0 0;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 nav a, nav a:visited{
   color: #fff;
 }
 
-h1 {
-  color: #fff;
+.page-title {
   margin: 15px;
   font-size: 30px;
   font-weight: normal; 
   line-height: 0.8em;
+  font-family: 'Ubuntu', sans-serif;
+  color: #599A68;
+  display: inline-block;
 }
 
 nav a.selected, nav a:hover {
@@ -74,6 +78,7 @@ nav a.selected, nav a:hover {
 
 .nav-link {
   text-align: center;
+  font-family: 'Ubuntu', sans-serif;
   padding: 10px;
   margin: 20px 0 0;
   display: inline;

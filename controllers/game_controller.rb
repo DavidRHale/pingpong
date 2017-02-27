@@ -68,3 +68,4 @@ post '/games/:id/delete' do
   game.delete
   erb(:'game/destroy')
 end
+

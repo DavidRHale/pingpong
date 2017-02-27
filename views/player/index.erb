@@ -1,16 +1,18 @@
-<h1>Players</h1>
+<div>
+  <h1 class="page-title">Players</h1>
 
-<ul class="gallery">
-<% @players.each do |player| %>
-<li>
-  <p>Name: <%= player.name %></p>
-  <p>Nickname: <%= player.nickname %></p>
-  <p>Dominant Hand: <%= player.dominant_hand %></p>
-  <p>Skill Set: <%= player.skill_set %></p>
-  <p>Wins: <%= player.win_count %></p>
-  <p>Losses: <%= player.loss_count %></p>
+  <ul class="gallery">
+  <% @players.each do |player| %>
+  <li>
+    <p>Name: <%= player.name %></p>
+    <p>Nickname: <%= player.nickname %></p>
+    <p>Dominant Hand: <%= player.dominant_hand %></p>
+    <p>Skill Set: <%= player.skill_set %></p>
+    <p>Wins: <%= player.win_count %></p>
+    <p>Losses: <%= player.loss_count %></p>
 
-  <a href="/players/<%= player.id %>">View Player</a>
-</li>
-<% end %>
-</ul>
+    <a href="/players/<%= player.id %>">View Player</a>
+  </li>
+  <% end %>
+  </ul>
+</div>
