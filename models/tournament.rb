@@ -8,6 +8,10 @@ class Tournament
     @format = options['format']
   end
 
-  
+  def save
+    sql = "INSERT INTO tournaments (name, format) VALUES ('#{@name}', '#{@format}') RETURNING *;"
+    tournament = SqlRunner.run(sql).first
+    @id = tournament['id'].to_i
+  end
 
 end
