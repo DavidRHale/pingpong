@@ -1,6 +1,7 @@
 DROP TABLE player_games;
 DROP TABLE tournaments;
 DROP TABLE players;
+DROP TABLE tournament_players;
 DROP TABLE games;
 
 CREATE TABLE players(
@@ -23,6 +24,12 @@ CREATE TABLE tournaments (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
   format VARCHAR(255)
+);
+
+CREATE TABLE tournament_players(
+  id SERIAL4 PRIMARY KEY,
+  player_id INT4 REFERENCES players(id) ON DELETE CASCADE,
+  tournament_id INT4 REFERENCES tournaments(id) ON DELETE CASCADE
 );
 
 CREATE TABLE player_games(
