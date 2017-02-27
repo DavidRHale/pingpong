@@ -13,3 +13,11 @@ get '/tournaments/:id' do
   @games = @tournament.create_league_fixtures
   erb(:'tournament/show')
 end
+
+get '/tournaments/new' do
+  erb(:'tournament/new')
+end
+
+post '/tournaments/add-player' do
+  erb(:'tournament/add-player')
+end

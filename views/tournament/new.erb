@@ -1,0 +1,16 @@
+<div>
+  <h1 class="page-title">New Tournament</h1>
+
+  <form method="POST" action="/add-player">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name"/>
+
+    <label for="format">Format:</label>
+    <select name="format" id="format">
+      <option value="League">League</option>
+      <option value="Knock-Out">Knock-Out</option>
+    </select>
+
+    <button type="submit">Add New Tournament</button>
+  </form>
+</div>
