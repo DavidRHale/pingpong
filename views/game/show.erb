@@ -11,6 +11,8 @@
                <% end %></p>
     <p>Score: <%= @player1.score(@game.id) %> : <%= @player2.score(@game.id) %></p>
 
+    <a href="/games/<%= @game.id %>/edit" class="link">Edit Game</a>
+
     <form method="POST" action="/games/<%= @game.id %>/delete">
       <button type="submit" class="delete-button">Delete Game</button>
     </form>
