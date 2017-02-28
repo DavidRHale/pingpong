@@ -17,12 +17,13 @@
     <% end %>
     <ul>
       <% @games.each do |game| %>
-        <p><%= game.game_date %> | <%= game.players[0].name %> Vs <%= game.players[1].name %> | 
+        <p><%= game.players[0].name %> Vs <%= game.players[1].name %> | 
         <% if game.scores.join(' - ') != '0 - 0' %>
           <%= game.scores.join(' - ') %>
         <% else %>
           <%= 'Unplayed' %>
         <% end %>
+        <a href="/games/<%= game.id %>/edit" class="link">Add Result</a>
         </p>
       <% end %>
     </ul>
