@@ -42,12 +42,6 @@ get '/tournaments/:id/edit' do
   erb(:'tournament/edit')
 end
 
-post '/tournaments/:id' do
-  tournament = Tournament.new(params)
-  tournament.update
-  redirect to "/tournaments/#{tournament.id}"
-end
-
 post '/tournaments/add-player' do
   tournament = Tournament.find_by_name(params['tournament_name'])
   params.delete('tournament_name')
@@ -57,5 +51,16 @@ post '/tournaments/add-player' do
     players.push(player)
   end
   players.each { |player| tournament.add_player(player.id) }
+  if tournament.format == "League"
+    tournament.create_league_fixtures
+  else
+    tournament.create_knockout_round
+  end
   erb(:'tournament/create')
+end
+
+post '/tournaments/:id' do
+  tournament = Tournament.new(params)
+  tournament.update
+  redirect to "/tournaments/#{tournament.id}"
 end

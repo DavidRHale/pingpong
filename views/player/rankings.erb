@@ -1,9 +1,15 @@
 <div>
-<h1 class="page-title">Rankings</h1>
+  <h1 class="page-title">Rankings</h1>
 
-  <% rank = 1 %>
-  <% @players.each do |player| %>
-  <p><%= rank %>) <%= player.name %> - <%= player.win_count %> wins, <%= player.loss_count %> losses</p>
-  <% rank += 1 %>
-  <% end %> 
+  <div class="rankings">
+    <ul>
+      <li>
+        <% rank = 1 %>
+        <% @players.each do |player| %>
+        <p><%= rank %>) <%= player.name %> - <%= player.win_count %> wins, <%= player.loss_count %> losses</p>
+        <% rank += 1 %>
+        <% end %> 
+      </li>
+    </ul>
+  </div>
 </div>

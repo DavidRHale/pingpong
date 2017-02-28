@@ -1,6 +1,8 @@
 <div>
   <h1 class="page-title">Tournaments</h1>
 
+  <a href="/tournaments/new" class="add-link">Add A Tournament</a>
+
   <ul class="gallery">
   <% @tournaments.each do |tournament| %>
   <li>
@@ -8,7 +10,7 @@
     <p>Format: <%= tournament.format %></p>
     
 
-    <a href="/tournaments/<%= tournament.id %>">View Tournament</a>
+    <a href="/tournaments/<%= tournament.id %>" class="link">View Tournament</a>
   </li>
   <% end %>
   </ul>

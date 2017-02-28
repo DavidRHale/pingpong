@@ -3,24 +3,24 @@
 
   <div class="show">
     
-    <h2>Players:</h2>
+    <p>Players:</p>
     <ul>
       <% @players.each do |player| %>
         <li><%= player.name %></li>
       <% end %>
     </ul>
 
-    <h2>Fixtures:</h2>
+    <p>Fixtures:</p>
     <ul>
       <% @games.each do |game| %>
         <li><%= game.game_date %> | <%= game.players[0].name %> Vs <%= game.players[1].name %> | <%= game.scores %></li>
       <% end %>
     </ul>
 
-    <a href="/tournaments/<%= @tournament.id %>/edit">Edit tournament</a>
+    <a href="/tournaments/<%= @tournament.id %>/edit" class="link">Edit Tournament</a>
 
     <form method="POST" action="/tournaments/<%= @tournament.id %>/delete">
-      <button type="submit">Delete</button>
+      <button type="submit" class="delete-button">Delete</button>
     </form>
   </div>
 </div>

@@ -1,13 +1,13 @@
 <div>
   <h1 class="page-title">Games</h1>
 
-  <a href="/games/new">Add A Game</a>
+  <a href="/games/new" class="add-link">Add A Game</a>
 
   <ul class="gallery">
     <% @games.each do |game| %>
     <li>
       <p>Date: <%= game.game_date %></p>
-      <a href="/games/<%= game.id %>">View Game</a>
+      <a href="/games/<%= game.id %>" class="link">View Game</a>
     </li>
     <% end %>
   </ul>
