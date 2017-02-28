@@ -19,7 +19,7 @@
       <p>Score: <%= game.scores.join(' - ') %></p>
     <% end %>
 
-    <a href="/players/<%= @player.id %>/edit">Edit Player</a>
+    <a href="/players/<%= @player.id %>/edit" class="link">Edit Player</a>
 
     <form method="POST" action="/players/<%= @player.id %>/delete">
       <button type="submit">Delete</button>

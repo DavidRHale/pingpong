@@ -16,7 +16,7 @@ player1 = Player.new({
   'nickname' => 'The Admiral',
   'dominant_hand' => 'Right',
   'skill_set' => 'Backhand God',
-  'win_count' => 4,
+  'win_count' => 0,
   'loss_count' => 0
   })
 
@@ -25,7 +25,7 @@ player2 = Player.new({
   'nickname' => 'The Wimp',
   'dominant_hand' => 'Right',
   'skill_set' => 'None',
-  'win_count' => 1,
+  'win_count' => 0,
   'loss_count' => 0
   })
 
@@ -34,7 +34,7 @@ player3 = Player.new({
   'nickname' => 'The Cat',
   'dominant_hand' => 'Right',
   'skill_set' => 'None',
-  'win_count' => 5,
+  'win_count' => 0,
   'loss_count' => 0
   })
 
@@ -43,7 +43,7 @@ player4 = Player.new({
   'nickname' => 'Jim',
   'dominant_hand' => 'Right',
   'skill_set' => 'None',
-  'win_count' => 3,
+  'win_count' => 0,
   'loss_count' => 0
   })
 

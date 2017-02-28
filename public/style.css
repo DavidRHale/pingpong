@@ -89,15 +89,15 @@ nav a.selected, nav a:hover {
 }
 
 .show {
+  width: 470px;
   margin: 0 auto;
   padding: 0;
   background-color: #6ab47b;
-  margin: 0;
   padding: 2.5%;
   font-size: 18px;
   color: #FFF;
-  
   text-align: left;
+  display: block;
 }
 
 body {
@@ -113,4 +113,21 @@ footer {
 
 p {
   font-family: 'Ubuntu', sans-serif;
+}
+
+.link {
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  padding: 10px;
+  margin: 20px 0 0;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.link:visited {
+  color: #fff;
+}
+
+.link:hover {
+  background-color: #32673F;
 }
