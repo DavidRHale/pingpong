@@ -10,7 +10,11 @@
       <% end %>
     </ul>
 
-    <p>Fixtures:</p>
+    <% if @tournament.format == "League" %>
+      <p>Fixtures:</p>
+    <% else %>
+      <p>Round 1:</p>
+    <% end %>
     <ul>
       <% @games.each do |game| %>
         <li><%= game.game_date %> | <%= game.players[0].name %> Vs <%= game.players[1].name %> | <%= game.scores %></li>

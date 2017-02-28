@@ -11,12 +11,14 @@
 
     <p>Last 5 Games: </p>
     <% @games.each do |game| %>
-      <p>Date: <%= game.game_date %></p>
-      <p>Opponent: <% game.players.each do |player| %>
-        <%= player.name unless player.name == @player.name %>
-      <% end %></p>
-      <p>Winner: <%= game.winner.name %></p>
-      <p>Score: <%= game.scores.join(' - ') %></p>
+      <% if game.winner != nil %>
+        <p>Date: <%= game.game_date %></p>
+        <p>Opponent: <% game.players.each do |player| %>
+          <%= player.name unless player.name == @player.name %>
+        <% end %></p>
+        <p>Winner: <% game.winner.name %></p>
+        <p>Score: <%= game.scores.join(' - ') %></p>
+      <% end %>
     <% end %>
 
     <a href="/players/<%= @player.id %>/edit" class="link">Edit Player</a>
