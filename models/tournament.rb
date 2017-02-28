@@ -108,7 +108,8 @@ class Tournament
     end
   end
 
-  def create_knockout_round(players_knocked_out)
+  def create_knockout_round
+
     players = tournament_players - players_knocked_out
     num_of_players = players.count
 

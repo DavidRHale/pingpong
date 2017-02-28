@@ -59,6 +59,11 @@ post '/tournaments/add-player' do
   erb(:'tournament/create')
 end
 
+post '/tournaments/:id/next-round' do
+  tournament = Tournament.find(params[:id])
+  knocked_out = 
+end
+
 post '/tournaments/:id' do
   tournament = Tournament.new(params)
   tournament.update
