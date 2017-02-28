@@ -98,6 +98,7 @@ nav a.selected, nav a:hover {
   color: #FFF;
   text-align: left;
   display: block;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 body {
@@ -257,4 +258,17 @@ select {
   font-family: 'Ubuntu', sans-serif;
   display: block;
   text-align: left;
+}
+
+.show-tournaments {
+  width: 560px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #6ab47b;
+  padding: 2.5%;
+  font-size: 18px;
+  color: #FFF;
+  text-align: left;
+  display: block;
+  font-family: 'Ubuntu', sans-serif;
 }

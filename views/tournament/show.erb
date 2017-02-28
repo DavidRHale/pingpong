@@ -1,12 +1,12 @@
 <div>
   <h1 class="page-title"><%= @tournament.name %></h1>
 
-  <div class="show">
+  <div class="show-tournaments">
     
     <p>Players:</p>
     <ul>
       <% @players.each do |player| %>
-        <li><%= player.name %></li>
+        <p><%= player.name %></p>
       <% end %>
     </ul>
 
@@ -17,7 +17,13 @@
     <% end %>
     <ul>
       <% @games.each do |game| %>
-        <li><%= game.game_date %> | <%= game.players[0].name %> Vs <%= game.players[1].name %> | <%= game.scores %></li>
+        <p><%= game.game_date %> | <%= game.players[0].name %> Vs <%= game.players[1].name %> | 
+        <% if game.scores.join(' - ') != '0 - 0' %>
+          <%= game.scores.join(' - ') %>
+        <% else %>
+          <%= 'Unplayed' %>
+        <% end %>
+        </p>
       <% end %>
     </ul>
 
