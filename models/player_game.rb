@@ -32,6 +32,17 @@ class PlayerGame
     return PlayerGame.new(player_game)
   end
 
+  def self.find_game_and_player(game_id, player_id)
+    sql = "SELECT * FROM player_games WHERE game_id = #{game_id} AND player_id = #{player_id}"
+    player_game = SqlRunner.run(sql).first
+    return PlayerGame.new(player_game)
+  end
+
+  def update
+    sql = "UPDATE player_games SET (player_id, game_id, player_score, tournament_id, player_won) = (#{@player_id}, #{@game_id}, #{@player_score}, #{@tournament_id}, #{@player_won}) WHERE id = #{@id};"
+    SqlRunner.run(sql)
+  end
+
   def delete
     sql = "DELETE FROM player_games WHERE id = #{@id};"
     SqlRunner.run(sql)

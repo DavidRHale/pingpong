@@ -28,6 +28,30 @@ end
 post '/games/:id' do
   game = Game.new(params)
   game.update
+  
+  player1 = Player.find_by_name(params['player1_name'])
+  player2 = Player.find_by_name(params['player2_name'])
+  
+  player1_result = params['player1_score'].to_i > params['player2_score'].to_i
+  player2_result = params['player2_score'].to_i > params['player1_score'].to_i
+  
+  player1.add_win_or_loss(player1_result)
+  player2.add_win_or_loss(player2_result)
+
+  player1.update
+  player2.update
+
+  player_game1 = PlayerGame.find_game_and_player(game.id, player1.id)
+  player_game2 = PlayerGame.find_game_and_player(game.id, player2.id)
+
+  player_game1.player_score = params['player1_score'].to_i
+  player_game1.player_won = player1_result
+
+  player_game2.player_score = params['player2_score'].to_i
+  player_game2.player_won = player2_result
+
+  player_game1.update
+  player_game2.update
   erb(:'game/update')
 end
 
@@ -46,7 +70,6 @@ post '/games' do
 
   player1.update
   player2.update
-
 
   player_game1 = PlayerGame.new({
     'player_id' => player1.id, 
