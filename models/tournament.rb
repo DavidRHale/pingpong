@@ -80,21 +80,19 @@ class Tournament
       player1 = players.sample
       player2 = players.sample
 
-      games = tournament_games
+      games = tournament_games # gives an array of game objects
 
-      players_in_games = games.map {|game| game.player_names}
+      players_in_games = games.map {|game| game.player_names} #replaces the game objects with an array of 2 names
 
-      players_in_games.flatten!
-
-      game_made = players_in_games.map do |name_array|
-        (name_array.include? player1.name) && (name_array.include? player2.name)
+      game_made = players_in_games.map do |name_array| (name_array.include? player1.name) && (name_array.include? player2.name)
       end
 
       game_made = game_made.include? true
 
-      if (player1 != player2) && !game_made
+      if (player1 != player2) && (!game_made)
         game = Game.new({'game_date' => (Date.today + counter + 1), 'tournament_id' => @id})
         game.save
+
         player_game1 = PlayerGame.new({'player_id' => player1.id.to_i, 'game_id' => game.id.to_i, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
         player_game2 = PlayerGame.new({'player_id' => player2.id, 'game_id' => game.id, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
         player_game1.save
