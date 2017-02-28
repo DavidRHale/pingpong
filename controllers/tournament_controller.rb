@@ -54,7 +54,7 @@ post '/tournaments/add-player' do
   if tournament.format == "League"
     tournament.create_league_fixtures
   else
-    tournament.create_knockout_round
+    tournament.create_knockout_round([])
   end
   erb(:'tournament/create')
 end

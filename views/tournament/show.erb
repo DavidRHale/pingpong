@@ -15,6 +15,7 @@
     <% else %>
       <p>Round 1:</p>
     <% end %>
+    
     <ul>
       <% @games.each do |game| %>
         <p><%= game.players[0].name %> Vs <%= game.players[1].name %> | 
