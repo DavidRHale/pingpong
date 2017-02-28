@@ -31,6 +31,12 @@ class Tournament
     return Tournament.new(tournament)
   end
 
+  def self.find_by_name(name)
+    sql = "SELECT * FROM tournaments WHERE name = '#{name}'"
+    tournament = SqlRunner.run(sql).first
+    return Tournament.new(tournament)
+  end
+
   def update
     sql = "UPDATE tournaments SET (name, format) = ('#{@name}', '#{@format}') WHERE id = #{@id};"
     SqlRunner.run(sql)
@@ -99,7 +105,6 @@ class Tournament
     end
 
     return tournament_games
-   
   end
 
 end

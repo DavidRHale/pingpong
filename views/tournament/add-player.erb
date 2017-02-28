@@ -1,0 +1,14 @@
+<div>
+  <h1>Add Player:</h1>
+  <form method="POST" action="/tournaments/add-player">
+    <label for="player-name">Player:</label>
+      <% @players.each do |player| %>
+        <input type="checkbox" name="player_name_<%= player.id %>" value="<%= player.name %>"/><%= player.name %></option>
+      <% end %>
+
+    <label for="tournament-name">Tournament Name:</label>
+    <input type="text" name="tournament_name" id="tournament-name"/>
+
+    <button type="submit">Add Player To Tournament</button>
+  </form>
+</div>
