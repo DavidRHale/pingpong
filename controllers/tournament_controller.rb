@@ -15,7 +15,7 @@ end
 get '/tournaments/:id' do
   @tournament = Tournament.find(params[:id])
   @players = @tournament.tournament_players
-  @games = @tournament.create_league_fixtures
+  @games = @tournament.tournament_games
   erb(:'tournament/show')
 end
 
@@ -29,6 +29,23 @@ end
 get '/tournaments/add-player' do
   @players = Player.all
   erb(:'tournament/add-player')
+end
+
+post '/tournaments/:id/delete' do
+  tournament = Tournament.find(params[:id])
+  tournament.delete
+  erb(:'tournament/destroy')
+end
+
+get '/tournaments/:id/edit' do
+  @tournament = Tournament.find(params[:id])
+  erb(:'tournament/edit')
+end
+
+post '/tournaments/:id' do
+  tournament = Tournament.new(params)
+  tournament.update
+  redirect to "/tournaments/#{tournament.id}"
 end
 
 post '/tournaments/add-player' do

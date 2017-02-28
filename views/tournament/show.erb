@@ -17,7 +17,9 @@
       <% end %>
     </ul>
 
-    <form method="POST" action="/players/<%= @tournament.id %>/delete">
+    <a href="/tournaments/<%= @tournament.id %>/edit">Edit tournament</a>
+
+    <form method="POST" action="/tournaments/<%= @tournament.id %>/delete">
       <button type="submit">Delete</button>
     </form>
   </div>

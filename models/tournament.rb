@@ -80,15 +80,20 @@ class Tournament
       player1 = players.sample
       player2 = players.sample
 
-      games = tournament_games # gives an array of game objects
+      # gives an array of game objects
+      games = tournament_games 
 
-      players_in_games = games.map {|game| game.player_names} #replaces the game objects with an array of 2 names
+      #replaces the game objects with an array of 2 names
+      players_in_games = games.map {|game| game.player_names} 
 
+      # makes an array of booleans checking if names are already in games
       game_made = players_in_games.map do |name_array| (name_array.include? player1.name) && (name_array.include? player2.name)
-      end
+      end 
 
+      # check if array inclues true and makes it true or false
       game_made = game_made.include? true
 
+      # if players are not the same and the game is not made it will create the game and increment counter
       if (player1 != player2) && (!game_made)
         game = Game.new({'game_date' => (Date.today + counter + 1), 'tournament_id' => @id})
         game.save
@@ -101,8 +106,6 @@ class Tournament
         counter += 1
       end
     end
-
-    return tournament_games
   end
 
 end

@@ -1,0 +1,16 @@
+<div>
+  <h1 class="page-title">Edit Tournament</h1>
+
+  <form method="POST" action="/tournaments/<%= @tournament.id %>">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="<%= @tournament.name %>"/>
+
+    <label for="format">Format:</label>
+    <select name="format" id="format">
+      <option <%= 'selected' if @tournament.format == 'League' %> value="League">League</option>
+      <option <%= 'selected' if @tournament.format == 'League' %>value="Knock-Out">Knock-Out</option>
+    </select>
+
+    <button type="submit">Edit Tournament</button>
+  </form>
+</div>
