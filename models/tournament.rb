@@ -117,6 +117,8 @@ class Tournament
     starting_players_length = tournament_players.count
     current_players_length = players_not_lost.count
 
+    current_players_length += 1 if current_players_length.odd?
+
     case
       when starting_players_length == current_players_length
         return 1

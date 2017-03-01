@@ -17,7 +17,7 @@
         <% @games.each do |game| %>
           <p><%= game.players[0].name %> Vs <%= game.players[1].name %> | 
           <% if game.scores.join(' - ') != '0 - 0' %>
-            <%= game.scores.join(' - ') %>
+            <%= game.players[0].score(game.id) %> - <%= game.players[1].score(game.id) %>
           <% else %>
             <% unplayed_games = [] %>
             <% unplayed_games.push(game) %>
