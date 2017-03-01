@@ -11,11 +11,11 @@ class PlayerGame
     @game_id = options['game_id'].to_i
     @tournament_id = options['tournament_id'].to_i
     @player_score = options['player_score'].to_i
-    @player_won = options['player_won']
+    @player_won = options['player_won'] if options['player_won']
   end
 
   def save
-    sql = "INSERT INTO player_games (player_id, game_id, player_score, tournament_id, player_won) VALUES (#{@player_id}, #{@game_id}, #{@player_score}, #{@tournament_id}, #{@player_won}) RETURNING *;"
+    sql = "INSERT INTO player_games (player_id, game_id, player_score, tournament_id#{(", " + player_won) unless player_won == nil}) VALUES (#{@player_id}, #{@game_id}, #{@player_score}, #{@tournament_id}#{", " +@player_won unless player_won == nil}) RETURNING *;"
     player_game = SqlRunner.run(sql).first
     @id = player_game['id'].to_i
   end

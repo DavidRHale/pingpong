@@ -15,6 +15,7 @@ end
 get '/tournaments/:id' do
   @tournament = Tournament.find(params[:id])
   @players = @tournament.tournament_players
+  @round = @tournament.round_number
   @games = @tournament.tournament_games
   erb(:'tournament/show')
 end
@@ -61,6 +62,7 @@ end
 
 post '/tournaments/:id/next-round' do
   @tournament = Tournament.find(params[:id])
+  @round = @tournament.round_number
   @tournament.create_knockout_round
   redirect to redirect to "/tournaments/#{@tournament.id}"
 end

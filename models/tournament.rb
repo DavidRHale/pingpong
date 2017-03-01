@@ -62,11 +62,14 @@ class Tournament
     players = tournament_players
     losers = tournament_losers
 
-    current_players = losers.each do |loser|
-      players.delete_if { |player| player.id == loser.id }
+    if losers != []
+      return current_players = losers.each do |loser|
+        players.delete_if { |player| player.id == loser.id }
+      end
+    else
+      return players
     end
-
-    return current_players
+    
   end
 
   def tournament_games
@@ -83,8 +86,46 @@ class Tournament
 
   def tournament_losers
     games = tournament_games
-    losers = games.map { |game| game.loser(@id) }
+    losers = []
+
+    games.each do |game| 
+      loser = game.loser(@id) 
+      losers.push(loser) unless loser == nil
+    end
+
     return losers
+  end
+
+  def create_player_list
+    players = players_not_lost
+    num_of_players = players.count
+
+    if num_of_players.odd?
+      bye_player = players.sample
+      players.delete(bye_player)
+    end
+
+    return players
+  end
+
+  def round_number
+    starting_players_length = tournament_players.count
+    current_players_length = create_player_list.count
+
+    case
+      when starting_players_length == current_players_length
+        return round = 1
+      when (starting_players_length / 2) == current_players_length
+        return round = 2
+      when (starting_players_length / 4) == current_players_length
+        return round = 3
+      when (starting_players_length / 8) == current_players_length
+        return round = 4
+      when (starting_players_length / 16) == current_players_length
+        return round = 5
+      when (starting_players_length / 32) == current_players_length
+        return round = 6
+    end
   end
 
   def create_league_fixtures
@@ -126,17 +167,10 @@ class Tournament
   end
 
   def create_knockout_round
-      players = players_not_lost
-
-      num_of_players = players.count
-
-      if num_of_players.odd?
-        bye_player = players.sample
-        players.delete(bye_player)
-      end
-
+      starting_players = tournament_players
+      current_players = create_player_list
+      num_of_players = current_players.count
       counter = 0
-
       games = []
 
       while true
@@ -144,8 +178,8 @@ class Tournament
 
         players_in_games = games.map { |game| game.player_names } 
 
-        player1 = players.sample
-        player2 = players.sample
+        player1 = current_players.sample
+        player2 = current_players.sample
 
         player_played = players_in_games.map do |name_array| (name_array.include? player1.name) || (name_array.include? player2.name)
         end
@@ -157,8 +191,8 @@ class Tournament
           games.push(game)
           game.save
 
-          player_game1 = PlayerGame.new({'player_id' => player1.id.to_i, 'game_id' => game.id.to_i, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
-          player_game2 = PlayerGame.new({'player_id' => player2.id, 'game_id' => game.id, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
+          player_game1 = PlayerGame.new({'player_id' => player1.id.to_i, 'game_id' => game.id.to_i, 'tournament_id' => @id, 'player_score' => 0})
+          player_game2 = PlayerGame.new({'player_id' => player2.id, 'game_id' => game.id, 'tournament_id' => @id, 'player_score' => 0})
           player_game1.save
           player_game2.save
 

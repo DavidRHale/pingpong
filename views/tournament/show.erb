@@ -12,9 +12,14 @@
 
     <% if @tournament.format == "League" %>
       <p>Fixtures:</p>
-    <% else %>
-      <p>Round 1:</p>
     <% end %>
+
+
+    <% if @tournament.format == "Knock-Out" %>
+      <% number = 1%>
+      <% @round.times do %>
+      <p>Round <%= number %>:</p>
+    
     
     <ul>
       <% @games.each do |game| %>
@@ -22,12 +27,19 @@
         <% if game.scores.join(' - ') != '0 - 0' %>
           <%= game.scores.join(' - ') %>
         <% else %>
+          <% unplayed_games = [] %>
+          <% unplayed_games.push(game) %>
           <%= 'Unplayed' %>
         <% end %>
         <a href="/games/<%= game.id %>/edit" class="link">Add Result</a>
         </p>
       <% end %>
     </ul>
+    <% number += 1 %>
+    <% end %>
+    <% end %>
+
+
 
     <form method="POST" action="/tournaments/<%= @tournament.id %>/next-round">
       <button type="submit" class="delete-button">Next Round</button>
