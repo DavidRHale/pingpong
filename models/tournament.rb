@@ -58,6 +58,17 @@ class Tournament
     return players.map { |player| Player.new(player) }
   end
 
+  def players_not_lost
+    players = tournament_players
+    losers = tournament_losers
+
+    current_players = losers.each do |loser|
+      players.delete_if { |player| player.id == loser.id }
+    end
+
+    return current_players
+  end
+
   def tournament_games
     sql = "SELECT * FROM games WHERE tournament_id = #{@id}"
     games = SqlRunner.run(sql)
@@ -115,16 +126,7 @@ class Tournament
   end
 
   def create_knockout_round
-      losers = tournament_losers
-      loser_ids = losers.map { |loser| loser.id }
-
-      players = tournament_players
-
-      players = players.each do |player|
-        loser_ids.each do |id|
-          players.delete(player) if player.id == id
-        end
-      end
+      players = players_not_lost
 
       num_of_players = players.count
 
@@ -140,7 +142,7 @@ class Tournament
       while true
         break if counter == (num_of_players / 2)
 
-        players_in_games = games.map {|game| game.player_names} 
+        players_in_games = games.map { |game| game.player_names } 
 
         player1 = players.sample
         player2 = players.sample
