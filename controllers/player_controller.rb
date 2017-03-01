@@ -41,6 +41,9 @@ end
 
 post '/players/:id/delete' do
   player = Player.find_by_id(params[:id])
+  games = player.games
+  games.each { |game| game.delete }
   player.delete
+
   erb(:'player/destroy')
 end

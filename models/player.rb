@@ -70,6 +70,12 @@ class Player
     games = SqlRunner.run(sql)
     return games.map { |game| Game.new(game) }
   end
+
+  def games
+    sql = "SELECT g.* FROM games g INNER JOIN player_games pg ON pg.game_id = g.id WHERE pg.player_id = #{@id}"
+    games = SqlRunner.run(sql)
+    return games.map { |game| Game.new(game) }
+  end
   
   def self.rankings
     sql = "SELECT * FROM players ORDER BY win_count DESC;"
