@@ -73,8 +73,8 @@ class Game
     end
   end
 
-  def losers
-    sql = "SELECT p.* FROM players p INNER JOIN player_games pg ON pg.player_id = p.id WHERE pg.player_won = false AND pg.game_id = #{@id};"
+  def loser(tournament_id)
+    sql = "SELECT p.* FROM players p INNER JOIN player_games pg ON pg.player_id = p.id WHERE pg.player_won = false AND pg.game_id = #{@id} AND pg.tournament_id = #{tournament_id};"
     loser = SqlRunner.run(sql).first
     return Player.new(loser)
   end

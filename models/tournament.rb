@@ -109,44 +109,55 @@ class Tournament
   end
 
   def create_knockout_round
-
-    players = tournament_players - players_knocked_out
-    num_of_players = players.count
-
-    if num_of_players.odd?
-      bye_player = players.sample
-      players.delete(bye_player)
-    end
-
-    counter = 0
-
-    while true
-      break if counter == (num_of_players / 2)
-
       games = tournament_games
+      losers = games.map { |game| game.loser(@id) }
+      loser_ids = losers.map { |loser| loser.id }
 
-      players_in_games = games.map {|game| game.player_names} 
+      players = tournament_players
 
-      player1 = players.sample
-      player2 = players.sample
-
-      player_played = players_in_games.map do |name_array| (name_array.include? player1.name) || (name_array.include? player2.name)
+      players = players.each do |player|
+        loser_ids.each do |id|
+          players.delete(player) if player.id == id
+        end
       end
 
-      player_played = player_played.include? true
+      num_of_players = players.count
 
-      if (player1 != player2) && (!player_played)
-        game = Game.new({'game_date' => (Date.today + counter + 1), 'tournament_id' => @id})
-        game.save
+      if num_of_players.odd?
+        bye_player = players.sample
+        players.delete(bye_player)
+      end
 
-        player_game1 = PlayerGame.new({'player_id' => player1.id.to_i, 'game_id' => game.id.to_i, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
-        player_game2 = PlayerGame.new({'player_id' => player2.id, 'game_id' => game.id, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
-        player_game1.save
-        player_game2.save
+      counter = 0
 
-        counter += 1
+      games = []
+
+      while true
+        break if counter == (num_of_players / 2)
+
+        players_in_games = games.map {|game| game.player_names} 
+
+        player1 = players.sample
+        player2 = players.sample
+
+        player_played = players_in_games.map do |name_array| (name_array.include? player1.name) || (name_array.include? player2.name)
+        end
+
+        player_played = player_played.include? true
+
+        if (player1 != player2) && (!player_played)
+          game = Game.new({'game_date' => (Date.today + counter + 1), 'tournament_id' => @id})
+          games.push(game)
+          game.save
+
+          player_game1 = PlayerGame.new({'player_id' => player1.id.to_i, 'game_id' => game.id.to_i, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
+          player_game2 = PlayerGame.new({'player_id' => player2.id, 'game_id' => game.id, 'tournament_id' => @id, 'player_score' => 0, 'player_won' => false})
+          player_game1.save
+          player_game2.save
+
+          counter += 1
+        end
       end
     end
-  end
 
 end

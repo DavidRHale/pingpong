@@ -60,5 +60,9 @@ tournament1.save
 tournament2.save
 tournament3.save
 
+# player_game1 = PlayerGame.new({'player_id' => player1.id, 'game_id' => game1.id, 'player_score' => 21, 'tournament_id' => tournament2.id, 'player_won' => false})
+
+
+
 binding.pry
 nil

@@ -29,6 +29,10 @@
       <% end %>
     </ul>
 
+    <form method="POST" action="/tournaments/<%= @tournament.id %>/next-round">
+      <button type="submit" class="delete-button">Next Round</button>
+    </form>
+
     <a href="/tournaments/<%= @tournament.id %>/edit" class="link">Edit Tournament</a>
 
     <form method="POST" action="/tournaments/<%= @tournament.id %>/delete">

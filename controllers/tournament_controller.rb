@@ -54,14 +54,15 @@ post '/tournaments/add-player' do
   if tournament.format == "League"
     tournament.create_league_fixtures
   else
-    tournament.create_knockout_round([])
+    tournament.create_knockout_round
   end
   erb(:'tournament/create')
 end
 
 post '/tournaments/:id/next-round' do
-  tournament = Tournament.find(params[:id])
-  knocked_out = 
+  @tournament = Tournament.find(params[:id])
+  @tournament.create_knockout_round
+  redirect to redirect to "/tournaments/#{@tournament.id}"
 end
 
 post '/tournaments/:id' do
