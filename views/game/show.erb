@@ -3,13 +3,13 @@
 
   <div class="show">
     <p>Date: <%= @game.game_date %></p>
-    <p>Players: <%= @player1.name %>, <%= @player2.name %></p>
+    <p>Players: <%= @player1.name %> Vs <%= @player2.name %></p>
     <p>Winner: <% if @game.winner == nil %>
                  <%= "Not played" %>
                <% else %>
                  <%= @game.winner.name  %>
                <% end %></p>
-    <p>Score: <%= @player1.score(@game.id) %> : <%= @player2.score(@game.id) %></p>
+    <p>Score: <%= @player1.score(@game.id) %> - <%= @player2.score(@game.id) %></p>
 
     <a href="/games/<%= @game.id %>/edit" class="link">Edit Game</a>
 

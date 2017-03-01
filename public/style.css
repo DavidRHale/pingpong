@@ -94,7 +94,6 @@ nav a.selected, nav a:hover {
   padding: 0;
   background-color: #6ab47b;
   padding: 2.5%;
-  font-size: 18px;
   color: #FFF;
   text-align: left;
   display: block;
@@ -289,3 +288,6 @@ select {
   font-family: 'Ubuntu', sans-serif;
 }
 
+.add-result-link {
+  display: inline-block;
+}

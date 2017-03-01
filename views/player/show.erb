@@ -9,14 +9,16 @@
     <p>Wins: <%= @player.win_count %></p>
     <p>Losses: <%= @player.loss_count %></p>
 
+    <hr/>
     <p>Last 5 Games: </p>
     <% @games.each do |game| %>
       <% if game.winner != nil %>
+        <hr/>
         <p>Date: <%= game.game_date %></p>
         <p>Opponent: <% game.players.each do |player| %>
           <%= player.name unless player.name == @player.name %>
         <% end %></p>
-        <p>Winner: <% game.winner.name %></p>
+        <p>Winner: <%= game.winner.name %></p>
         <p>Score: <%= game.scores.join(' - ') %></p>
       <% end %>
     <% end %>

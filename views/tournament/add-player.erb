@@ -3,7 +3,7 @@
   <form method="POST" action="/tournaments/add-player">
     <label for="player-name">Players:</label>
       <% @players.each do |player| %>
-        <input class="checkbox" type="checkbox" name="player_name_<%= player.id %>" value="<%= player.name %>"/>
+        <input class="checkbox" type="checkbox" name="player_name" id="player-name" value="<%= player.name %>"/>
         <option class="checkbox-label"><%= player.name %></option>
       <% end %>
 
