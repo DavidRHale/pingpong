@@ -290,3 +290,7 @@ select {
 .add-result-link {
   display: inline-block;
 }
+
+.winner {
+  margin: 0 auto;
+}

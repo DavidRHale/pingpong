@@ -34,7 +34,7 @@
       <ul>
 
         <% if @tournament.players_not_lost.length == 1 %>
-          <p>The winner is <%= @tournament.tournament_winner.name %>!</p>
+          <h2 class="winner">The winner is <%= @tournament.tournament_winner.name %>!</h2>
         <% end %>
 
         <% @games.each do |game| %>
@@ -47,12 +47,15 @@
             <%= 'Unplayed' %>
           <% end %>
           </p>
-          <a href="/games/<%= game.id %>/edit" class="link add-result-link">Add Result</a>
+          <a href="/games/<%= game.id %>/edit" class="link add-result-link">Add/Edit Result</a>
         <% end %>
       </ul>
-      <form method="POST" action="/tournaments/<%= @tournament.id %>/next-round">
-        <button type="submit" class="button">Next Round</button>
-      </form>
+
+      <% if @tournament.players_not_lost.length > 1 %>
+        <form method="POST" action="/tournaments/<%= @tournament.id %>/next-round">
+          <button type="submit" class="button">Next Round</button>
+        </form>
+      <% end %>
     <% end %>
 
     <a href="/tournaments/<%= @tournament.id %>/edit" class="link">Edit Tournament</a>
