@@ -2,17 +2,18 @@ require_relative('../db/sql_runner.rb')
 
 class Game
 
-  attr_accessor :game_date, :tournament_id
+  attr_accessor :game_date, :tournament_id, :tournament_round
   attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @game_date = options['game_date']
     @tournament_id = options['tournament_id'].to_i
+    @tournament_round = options['tournament_round'].to_i if options['tournament_round']
   end
 
   def save
-    sql = "INSERT INTO games (game_date, tournament_id) VALUES ('#{@game_date}', #{@tournament_id}) RETURNING *;"
+    sql = "INSERT INTO games (game_date, tournament_id #{", tournament_round" unless @tournament_round == nil }) VALUES ('#{@game_date}', #{@tournament_id} #{", " + @tournament_round unless @tournament_round == nil}) RETURNING *;"
     game = SqlRunner.run(sql).first
     @id = game['id'].to_i
   end
@@ -30,7 +31,7 @@ class Game
   end
 
   def update
-    sql = "UPDATE games SET (game_date) = ('#{@game_date}') WHERE id = #{@id};"
+    sql = "UPDATE games SET (game_date, tournament_id #{", tournament_round" unless @tournament_round == nil}) = ('#{@game_date}', #{@tournament_id} #{", " + @tournament_round unless @tournament_round == nil}) WHERE id = #{@id};"
     SqlRunner.run(sql)
   end
 
