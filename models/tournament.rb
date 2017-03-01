@@ -167,6 +167,7 @@ class Tournament
   end
 
   def create_knockout_round
+      round = round_number
       starting_players = tournament_players
       current_players = create_player_list
       num_of_players = current_players.count
@@ -187,7 +188,7 @@ class Tournament
         player_played = player_played.include? true
 
         if (player1 != player2) && (!player_played)
-          game = Game.new({'game_date' => (Date.today + counter + 1), 'tournament_id' => @id})
+          game = Game.new({'game_date' => (Date.today + counter + 1), 'tournament_id' => @id, 'tournament_round' => round_number})
           games.push(game)
           game.save
 

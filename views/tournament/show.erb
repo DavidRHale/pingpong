@@ -10,36 +10,25 @@
       <% end %>
     </ul>
 
-    <% if @tournament.format == "League" %>
-      <p>Fixtures:</p>
-    <% end %>
-
+    <p>Fixtures:</p>
 
     <% if @tournament.format == "Knock-Out" %>
-      <% number = 1%>
-      <% @round.times do %>
-      <p>Round <%= number %>:</p>
     
-    
-    <ul>
-      <% @games.each do |game| %>
-        <% if game.round == number %>
-        <p><%= game.players[0].name %> Vs <%= game.players[1].name %> | 
-        <% if game.scores.join(' - ') != '0 - 0' %>
-          <%= game.scores.join(' - ') %>
-        <% else %>
-          <% unplayed_games = [] %>
-          <% unplayed_games.push(game) %>
-          <%= 'Unplayed' %>
+      <ul>
+        <% @games.each do |game| %>
+          <p>Round <%= game.tournament_round %>: <%= game.players[0].name %> Vs <%= game.players[1].name %> | 
+          <% if game.scores.join(' - ') != '0 - 0' %>
+            <%= game.scores.join(' - ') %>
+          <% else %>
+            <% unplayed_games = [] %>
+            <% unplayed_games.push(game) %>
+            <%= 'Unplayed' %>
+          <% end %>
+          <a href="/games/<%= game.id %>/edit" class="link">Add Result</a>
+          </p>
+          <% end %>
         <% end %>
-        <a href="/games/<%= game.id %>/edit" class="link">Add Result</a>
-        </p>
-        <% end %>
-      <% end %>
-    </ul>
-    <% number += 1 %>
-    <% end %>
-    <% end %>
+      </ul>
 
 
 

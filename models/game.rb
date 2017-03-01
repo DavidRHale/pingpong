@@ -13,7 +13,7 @@ class Game
   end
 
   def save
-    sql = "INSERT INTO games (game_date, tournament_id #{", tournament_round" unless @tournament_round == nil }) VALUES ('#{@game_date}', #{@tournament_id} #{", " + @tournament_round unless @tournament_round == nil}) RETURNING *;"
+    sql = "INSERT INTO games (game_date, tournament_id #{", tournament_round" unless @tournament_round == nil }) VALUES ('#{@game_date}', #{@tournament_id} #{", #{@tournament_round}" unless @tournament_round == nil}) RETURNING *;"
     game = SqlRunner.run(sql).first
     @id = game['id'].to_i
   end
@@ -31,7 +31,7 @@ class Game
   end
 
   def update
-    sql = "UPDATE games SET (game_date, tournament_id #{", tournament_round" unless @tournament_round == nil}) = ('#{@game_date}', #{@tournament_id} #{", " + @tournament_round unless @tournament_round == nil}) WHERE id = #{@id};"
+    sql = "UPDATE games SET (game_date #{", tournament_round" unless @tournament_round == nil}) = ('#{@game_date}' #{", " + @tournament_round unless @tournament_round == nil}) WHERE id = #{@id};"
     SqlRunner.run(sql)
   end
 
