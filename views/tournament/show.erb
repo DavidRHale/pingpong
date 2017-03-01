@@ -10,15 +10,28 @@
       <% end %>
     </ul>
 
-    <% if @current_players.count == 1 %>
-      <% @winner = @current_players.first %>
-      <p><%= @winner.name %> wins!</p>
-    <% end %>
-
     <p>Fixtures:</p>
 
+    <% if @tournament.format == "League" %>
+
+      <ul>
+        <% @games.each do |game| %>
+          <p><%= game.players[0].name %> Vs <%= game.players[1].name %> | 
+          <% if game.scores.join(' - ') != '0 - 0' %>
+            <%= game.scores.join(' - ') %>
+          <% else %>
+            <% unplayed_games = [] %>
+            <% unplayed_games.push(game) %>
+            <%= 'Unplayed' %>
+          <% end %>
+          </p>
+          <a href="/games/<%= game.id %>/edit" class="link add-result-link">Add Result</a>
+        <% end %>
+    <% end %>
+
+
+
     <% if @tournament.format == "Knock-Out" %>
-    
       <ul>
         <% @games.each do |game| %>
           <p>Round <%= game.tournament_round %>: <%= game.players[0].name %> Vs <%= game.players[1].name %> | 
@@ -32,14 +45,13 @@
           </p>
           <a href="/games/<%= game.id %>/edit" class="link add-result-link">Add Result</a>
         <% end %>
+        <form method="POST" action="/tournaments/<%= @tournament.id %>/next-round">
+          <button type="submit" class="delete-button">Next Round</button>
+        </form>
     <% end %>
       </ul>
 
-
-
-    <form method="POST" action="/tournaments/<%= @tournament.id %>/next-round">
-      <button type="submit" class="delete-button">Next Round</button>
-    </form>
+      
 
     <a href="/tournaments/<%= @tournament.id %>/edit" class="link">Edit Tournament</a>
 
