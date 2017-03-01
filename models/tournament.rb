@@ -97,6 +97,10 @@ class Tournament
     return losers
   end
 
+  def tournament_winner
+    return players_not_lost.first if players_not_lost.length == 1
+  end
+
   def create_player_list
     players = players_not_lost
     num_of_players = players.count

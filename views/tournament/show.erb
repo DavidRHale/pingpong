@@ -10,6 +10,10 @@
       <% end %>
     </ul>
 
+    <% if @tournament.players_not_lost.length == 1 %>
+      <p>The winner is <%= @tournament.tournament_winner.name %>!</p>
+    <% end %>
+
     <p>Fixtures:</p>
 
     <% if @tournament.format == "League" || @tournament.format == "League" %>
