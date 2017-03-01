@@ -70,6 +70,12 @@ class Tournament
     tournament_player.save
   end
 
+  def tournament_losers
+    games = tournament_games
+    losers = games.map { |game| game.loser(@id) }
+    return losers
+  end
+
   def create_league_fixtures
     players = tournament_players
     num_of_players = players.count
@@ -109,8 +115,7 @@ class Tournament
   end
 
   def create_knockout_round
-      games = tournament_games
-      losers = games.map { |game| game.loser(@id) }
+      losers = tournament_losers
       loser_ids = losers.map { |loser| loser.id }
 
       players = tournament_players
