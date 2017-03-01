@@ -12,7 +12,7 @@
 
     <p>Fixtures:</p>
 
-    <% if @tournament.format == "League" %>
+    <% if @tournament.format == "League" || @tournament.format == "League" %>
 
       <ul>
         <% @games.each do |game| %>
@@ -45,18 +45,19 @@
           </p>
           <a href="/games/<%= game.id %>/edit" class="link add-result-link">Add Result</a>
         <% end %>
+        </ul>
         <form method="POST" action="/tournaments/<%= @tournament.id %>/next-round">
-          <button type="submit" class="delete-button">Next Round</button>
+          <button type="submit" class="button">Next Round</button>
         </form>
     <% end %>
-      </ul>
+      
 
       
 
     <a href="/tournaments/<%= @tournament.id %>/edit" class="link">Edit Tournament</a>
 
     <form method="POST" action="/tournaments/<%= @tournament.id %>/delete">
-      <button type="submit" class="delete-button">Delete</button>
+      <button type="submit" class="button">Delete</button>
     </form>
   </div>
 </div>
