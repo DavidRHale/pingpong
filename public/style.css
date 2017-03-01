@@ -125,7 +125,7 @@ p {
   margin: 0 auto;
   text-decoration: none;
   display: block;
-  width: 30%;
+  max-width: 30%;
 }
 
 .link:visited {
@@ -197,6 +197,22 @@ select {
   width: 90%;
 }
 
+.checkbox {
+  display: auto;
+  float: left;
+  width: auto;
+  margin: 1%;
+}
+
+.checkbox-label {
+  display: block;
+  font-family: 'Ubuntu', sans-serif;
+  color: #fff;
+  margin: 5px;
+  padding: 0;
+  text-align: left;
+}
+
 .delete-button {
   color: white;
   background-color: #6ab47b;
@@ -261,7 +277,7 @@ select {
 }
 
 .show-tournaments {
-  width: 560px;
+  width: 720px;
   margin: 0 auto;
   padding: 0;
   background-color: #6ab47b;
@@ -272,3 +288,4 @@ select {
   display: block;
   font-family: 'Ubuntu', sans-serif;
 }
+

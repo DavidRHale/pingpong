@@ -17,6 +17,7 @@ get '/tournaments/:id' do
   @players = @tournament.tournament_players
   @round = @tournament.round_number
   @games = @tournament.tournament_games
+  @current_players = @tournament.players_not_lost
   erb(:'tournament/show')
 end
 

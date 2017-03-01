@@ -47,10 +47,20 @@ player4 = Player.new({
   'loss_count' => 0
   })
 
+player5 = Player.new({
+  'name' => 'Harold',
+  'nickname' => 'Harry',
+  'dominant_hand' => 'Right',
+  'skill_set' => 'None',
+  'win_count' => 0,
+  'loss_count' => 0
+  })
+
 player1.save
 player2.save
 player3.save
 player4.save
+player5.save
 
 tournament1 = Tournament.new({'name' => 'Master League', 'format' => 'League'})
 tournament2 = Tournament.new({'name' => 'Master Cup', 'format' => 'Knock-Out'})
@@ -64,6 +74,7 @@ tournament2.add_player(player1.id)
 tournament2.add_player(player2.id)
 tournament2.add_player(player3.id)
 tournament2.add_player(player4.id)
+tournament2.add_player(player5.id)
 
 tournament2.create_knockout_round
 

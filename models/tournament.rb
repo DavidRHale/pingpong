@@ -63,9 +63,10 @@ class Tournament
     losers = tournament_losers
 
     if losers != []
-      return current_players = losers.each do |loser|
-        players.delete_if { |player| player.id == loser.id }
-      end
+      current_players = losers.each do |loser| 
+      players.each {|player| players.delete(player) if player.id == loser.id }
+    end
+      return players
     else
       return players
     end
@@ -171,6 +172,9 @@ class Tournament
       starting_players = tournament_players
       current_players = create_player_list
       num_of_players = current_players.count
+
+      return current_players[0] if num_of_players == 1
+
       counter = 0
       games = []
 
