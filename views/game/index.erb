@@ -7,6 +7,7 @@
     <% @games.each do |game| %>
     <li>
       <p>Date: <%= game.game_date %></p>
+      <p>Players: <%= game.players[0].name %> Vs <%= game.players[1].name %></p>
       <a href="/games/<%= game.id %>" class="link">View Game</a>
     </li>
     <% end %>
