@@ -17,6 +17,13 @@
     <label for="player2-score">Player 2 Score:</label>
     <input type="number" name="player2_score" id="player2-score">
 
+    <label for="tournament">Tournament:</label>
+    <select name="tournament_id" id="tournament">
+      <% @tournaments.each do |tournament| %>
+        <option value="<%= tournament.id %>"><%= tournament.name %></option>
+      <% end %>
+    </select>
+
     <button type="submit">Add Game</button>
   </form>
 </div>

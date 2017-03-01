@@ -10,6 +10,7 @@ get '/games' do
 end
 
 get '/games/new' do 
+  @tournaments = Tournament.all
   erb(:'game/new')
 end
 
@@ -75,11 +76,13 @@ post '/games' do
     'player_id' => player1.id, 
     'game_id' => game.id, 
     'player_score' => params['player1_score'], 
+    'tournament_id' => params['tournament_id'],
     'player_won' => player1_result})
   player_game2 = PlayerGame.new({
     'player_id' => player2.id, 
     'game_id' => game.id, 
     'player_score' => params['player2_score'], 
+    'tournament_id' => params['tournament_id'],
     'player_won' => player2_result})
   player_game1.save
   player_game2.save
