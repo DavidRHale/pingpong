@@ -10,6 +10,7 @@
     <p>Losses: <%= @player.loss_count %></p>
 
     <hr/>
+    
     <p>Last 5 Games: </p>
     <% @games.each do |game| %>
       <% if game.winner != nil %>

@@ -2,7 +2,7 @@ require_relative('../db/sql_runner.rb')
 
 class PlayerGame
 
-  attr_accessor :player_id, :game_id, :player_score, :player_won
+  attr_accessor :player_id, :game_id, :player_score, :tournament_id, :player_won
   attr_reader :id
 
   def initialize(options)

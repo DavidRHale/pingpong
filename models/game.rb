@@ -64,7 +64,7 @@ class Game
   end
 
   def winner
-    sql = "SELECT players.* FROM players INNER JOIN player_games ON player_games.player_id = players.id WHERE player_games.player_won = true AND player_games.game_id = #{@id};"
+    sql = "SELECT p.* FROM players p INNER JOIN player_games pg ON pg.player_id = p.id WHERE pg.player_won = true AND pg.game_id = #{@id};"
     winner = SqlRunner.run(sql).first
 
     if winner == nil

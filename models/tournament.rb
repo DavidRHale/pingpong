@@ -115,21 +115,21 @@ class Tournament
 
   def round_number
     starting_players_length = tournament_players.count
-    current_players_length = create_player_list.count
+    current_players_length = players_not_lost.count
 
     case
       when starting_players_length == current_players_length
-        return round = 1
+        return 1
       when (starting_players_length / 2) == current_players_length
-        return round = 2
+        return 2
       when (starting_players_length / 4) == current_players_length
-        return round = 3
+        return 3
       when (starting_players_length / 8) == current_players_length
-        return round = 4
+        return 4
       when (starting_players_length / 16) == current_players_length
-        return round = 5
+        return 5
       when (starting_players_length / 32) == current_players_length
-        return round = 6
+        return 6
     end
   end
 
@@ -196,7 +196,7 @@ class Tournament
         player_played = player_played.include? true
 
         if (player1 != player2) && (!player_played)
-          game = Game.new({'game_date' => (Date.today + counter + 1), 'tournament_id' => @id, 'tournament_round' => round_number})
+          game = Game.new({'game_date' => (Date.today + counter + 1), 'tournament_id' => @id, 'tournament_round' => round})
           games.push(game)
           game.save
 
